@@ -16,3 +16,17 @@ exports.getStatus = function (req, res) {
     });
   };
 
+  exports.bookingStatus = function (req, res) {
+    Status.find({
+        'mobileNumber': req.params.no
+       }, function (err, statusDetail) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+            res.status(200).json(statusDetail);
+        }
+    });
+   
+  };

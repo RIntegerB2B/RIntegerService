@@ -10,5 +10,8 @@ app.route('/booking')
 
 app.route('/status/:id')        
 .get(statusMgr.getStatus);
+
+app.route('/bookingStatus/:no')        
+.get(statusMgr.bookingStatus);
      
 }
