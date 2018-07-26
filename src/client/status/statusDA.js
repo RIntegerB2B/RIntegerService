@@ -30,3 +30,18 @@ exports.getStatus = function (req, res) {
     });
    
   };
+
+  exports.bookingStatusForOne = function (req, res) {
+    Status.findOne({
+        'mobileNumber': req.params.no,
+        '_id':req.params.id
+       }, function (err, statusDetail) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+            res.status(200).json(statusDetail);
+        }
+    });
+  };

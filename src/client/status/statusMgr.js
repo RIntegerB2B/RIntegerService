@@ -20,3 +20,13 @@ exports.getStatus = function (req, res) {
         console.log(error);
     }
   };
+  
+
+  exports.bookingStatusForOne = function (req, res) {
+    
+    try {
+        statusDA.bookingStatusForOne(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+  };
