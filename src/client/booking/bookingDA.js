@@ -19,7 +19,8 @@
                   "result": "0"
               });
           } else {
-            var statusDetail = new Status(req.body);
+            var statusDetail = new Status();
+            statusDetail.bookingId = bookingData.id.toString();;
             statusDetail.mobileNumber = req.body.mobileNumber;
             statusDetail.bookingDate = date;
             statusDetail.order = 0;
@@ -38,8 +39,6 @@
                         });
                     } else {
                      res.status(200).json(statusData)
-                 
-                      
                     }
                 });   
           }
