@@ -38,4 +38,4 @@ app.get('/test', function (req, res) {
     res.send("Success!");
 })
 
-console.log('Seller Service started on: ' + port);
+console.log('RInteger Service started on: ' + port);
