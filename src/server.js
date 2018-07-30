@@ -23,7 +23,7 @@ app.listen(port);
 var mongoDbConfig = require('./config/mongoDatabase.config');
 var mongoose = require('mongoose');
 
-mongoose.connect(mongoDbConfig.url, {});
+mongoose.connect(mongoDbConfig.url, {useNewUrlParser: true});
 
 mongoose.connection.on('error', function () {
     console.log('Could not connect to the database. Exiting now...');
