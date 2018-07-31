@@ -2,6 +2,7 @@
 
  var BookingDetail = require('../../model/booking-detail.model');
  var Status = require('../../model/status.model');
+ var Notification = require('../../model/notification.model');
 
  exports.create = function (req, res,date) {
   var booking = new BookingDetail(req.body);
