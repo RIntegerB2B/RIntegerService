@@ -4,7 +4,8 @@
  var Status = require('../../model/status.model');
  var Notification = require('../../model/notification.model');
 
- exports.create = function (req, res,date) {
+ exports.create = function (req, res,date,bookingOrder) {
+     
   var booking = new BookingDetail(req.body);
   booking.mobileNumber = req.body.mobileNumber;
   booking.name = req.body.name;
@@ -12,7 +13,6 @@
   booking.modelType = req.body.modelType;
   booking.productDescription = req.body.productDescription;
   booking.quantityDescription = req.body.quantityDescription;
-
   booking.save(
       function (err, bookingData) {
           if (err) { 
@@ -21,8 +21,9 @@
               });
           } else {
             var statusDetail = new Status();
-            statusDetail.bookingId = bookingData.id.toString();;
+            statusDetail.bookingId = bookingData.id.toString();
             statusDetail.mobileNumber = req.body.mobileNumber;
+            statusDetail.bookingOrderId = bookingOrder;
             statusDetail.bookingDate = date;
             statusDetail.order = 0;
             statusDetail.materialPickedUp = 0;
@@ -43,7 +44,7 @@
                     }
                 });   
           }
-      }); 
+      });  
 };
 
 
