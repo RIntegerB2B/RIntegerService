@@ -35,7 +35,7 @@ exports.create = function (req, res) {
     var orderMonth = result.substr(0, 3).toUpperCase();
 
 
-    Status.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
+   /*  Status.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
       if (err) {
         res.status(500).send({
           message: "Some error occurred while retrieving notes."
@@ -45,11 +45,11 @@ exports.create = function (req, res) {
         var incOrder = max.substr(9, 1);
         var result = parseInt(incOrder) + 1;
         console.log(result);
-        var bookingOrder = order + orderMonth + orderYear + result;
+        var bookingOrder = order + orderMonth + orderYear + result; */
         bookingDA.create(req, res, date, bookingOrder);
-        console.log(bookingOrder);
+       /*  console.log(bookingOrder);
       }
-    });
+    }); */
 
 
   } catch (error) {
