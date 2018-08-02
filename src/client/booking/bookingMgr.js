@@ -46,7 +46,7 @@ exports.create = function (req, res) {
         var result = parseInt(incOrder) + 1;
         console.log(result);
         var bookingOrder = order + orderMonth + orderYear + result; */
-        bookingDA.create(req, res, date, bookingOrder);
+        bookingDA.create(req, res, date);
        /*  console.log(bookingOrder);
       }
     }); */

@@ -4,7 +4,7 @@
  var Status = require('../../model/status.model');
  var Notification = require('../../model/notification.model');
 
- exports.create = function (req, res,date,bookingOrder) {
+ exports.create = function (req, res,date) {
      
   var booking = new BookingDetail(req.body);
   booking.mobileNumber = req.body.mobileNumber;
@@ -23,7 +23,7 @@
             var statusDetail = new Status();
             statusDetail.bookingId = bookingData.id.toString();
             statusDetail.mobileNumber = req.body.mobileNumber;
-            statusDetail.bookingOrderId = bookingOrder;
+            /* statusDetail.bookingOrderId = bookingOrder; */
             statusDetail.bookingDate = date;
             statusDetail.order = 0;
             statusDetail.materialPickedUp = 0;
