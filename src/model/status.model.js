@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 const StatusSchema = new mongoose.Schema({
     mobileNumber: Number,
     bookingId: String,
-    /* bookingOrderId: String, */
+    bookingOrderId: String,
     bookingDate: String,
     order: Boolean,
     materialPickedUp: Boolean,

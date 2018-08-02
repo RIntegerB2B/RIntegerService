@@ -1,5 +1,6 @@
 var bookingDA = require('./bookingDA');
 const webpush = require('web-push');
+var zeroFill = require('zero-fill')
 /* var rn = require('random-number'); */
 var Status = require('../../model/status.model');
 const vapidKeys = {
@@ -35,21 +36,28 @@ exports.create = function (req, res) {
     var orderMonth = result.substr(0, 3).toUpperCase();
 
 
-   /*  Status.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
+    Status.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
       if (err) {
         res.status(500).send({
           message: "Some error occurred while retrieving notes."
         });
       } else {
-        var max = details.bookingOrderId;
-        var incOrder = max.substr(9, 1);
-        var result = parseInt(incOrder) + 1;
-        console.log(result);
-        var bookingOrder = order + orderMonth + orderYear + result; */
-        bookingDA.create(req, res, date);
-       /*  console.log(bookingOrder);
+        if( details == null) {
+         var bookingOrder =order + orderYear+ orderMonth + "0001";
+          bookingDA.create(req, res, date, bookingOrder);
+        } 
+        else {
+        var maxID = details.bookingOrderId;
+        var incOrder = maxID.slice(-4);
+        var addZero =zeroFill(4, 1);
+        var result = parseInt(incOrder) + parseInt(addZero);
+         var results =zeroFill(4,result);
+        var bookingOrder = order +orderYear  +orderMonth  + results;
+        bookingDA.create(req, res, date, bookingOrder);
+        console.log(bookingOrder);
+        }
       }
-    }); */
+    });
 
 
   } catch (error) {
