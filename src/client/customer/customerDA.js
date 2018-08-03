@@ -30,18 +30,23 @@ exports.create = function (req, res) {
                         }
                     });
             } else if (customerDetail != null) {
-                CustomerDetail.update({}, {
-                    shootType: req.body.shootType,
-                    modelType: req.body.modelType
-                }, function (err, customerData) {
-                    if (err) {
-                        res.status(500).send({
-                            message: "Some error occurred "
-                        });
-                    } else {
-                        res.status(200).json(customerData)
-                    }
-                });
+               CustomerDetail.findOneAndUpdate({
+                    'mobileNumber': req.body.mobileNumber
+                    }, {
+                        $push: {
+                            shootType : req.body.shootType,
+                            modelType: req.body.modelType
+                        }
+                    },
+                    function (err, customerData) {
+                        if (err) { // if it contains error return 0
+                            res.status(500).send({
+                                "result": 0
+                            });
+                        } else {
+                            res.status(200).json(customerData)
+                        }
+                    })     
             }
 
         }
