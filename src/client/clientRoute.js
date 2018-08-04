@@ -10,6 +10,9 @@
 app.route('/booking')
  .post(bookingMgr.create);
 
+ app.route('/bookingDetails/:id')        
+.get(bookingMgr.getbookingDetails);
+
 app.route('/subscribe')
 .post(notificationMgr.addPushSubscriber);
 
@@ -19,7 +22,7 @@ app.route('/status/:id')
 app.route('/bookingStatus/:no')        
 .get(statusMgr.bookingStatus);
 
-app.route('/bookingStatus/:no/view/:id')        
+app.route('/bookingStatusView/:id')        
 .get(statusMgr.bookingStatusForOne);
 
 app.route('/customer')

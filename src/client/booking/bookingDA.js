@@ -9,6 +9,7 @@
   var booking = new BookingDetail(req.body);
   booking.mobileNumber = req.body.mobileNumber;
   booking.name = req.body.name;
+  booking.bookingOrderId = bookingOrder;
   booking.shootType = req.body.shootType;
   booking.modelType = req.body.modelType;
   booking.productType = req.body.productType;
@@ -49,3 +50,16 @@
 };
 
 
+exports.getbookingDetails = function (req, res) {
+    BookingDetail.find({
+        'bookingOrderId': req.params.id
+       }, function (err, bookingStatus) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+            res.status(200).json(bookingStatus);
+        }
+    });
+  };

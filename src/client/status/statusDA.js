@@ -33,8 +33,7 @@ exports.getStatus = function (req, res) {
 
   exports.bookingStatusForOne = function (req, res) {
     Status.findOne({
-        'mobileNumber': req.params.no,
-        '_id':req.params.id
+        'bookingOrderId': req.params.id
        }, function (err, statusDetail) {
         if (err) {
             res.status(500).send({

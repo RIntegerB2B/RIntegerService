@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 const BookingSchema = new mongoose.Schema({
     mobileNumber: Number,
     name: String,
+    bookingOrderId: String,
     shootType: [String],
     modelType: [String],
     productType: [String],
