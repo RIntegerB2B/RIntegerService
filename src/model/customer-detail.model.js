@@ -5,7 +5,8 @@ const CustomerSchema = new mongoose.Schema({
     name: String,
     location: String,
     shootType: [String],
-    modelType: [String]
+    modelType: [String],
+    product: [String]
 
 });
 
