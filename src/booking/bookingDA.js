@@ -8,6 +8,7 @@
   var booking = new BookingDetail(req.body);
   booking.mobileNumber = req.body.mobileNumber;
   booking.name = req.body.name;
+  booking.bookingOrderId = bookingOrder;
   booking.shootType = req.body.shootType;
   booking.modelType = req.body.modelType;
   booking.productType = req.body.productType;

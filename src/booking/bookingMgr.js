@@ -65,7 +65,10 @@ exports.create = function (req, res) {
   }
 };
 
+<<<<<<< HEAD:src/booking/bookingMgr.js
 
+=======
+>>>>>>> ca4d1e55aed7e4c5214143720926f0cef3ee6680:src/client/booking/bookingMgr.js
 exports.getbookingDetails = function (req, res) {
   try {
     bookingDA.getbookingDetails(req, res);
