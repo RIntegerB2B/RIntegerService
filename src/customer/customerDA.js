@@ -1,7 +1,7 @@
 'use strict';
 
-var CustomerDetail = require('../../model/customer-detail.model');
-var Query  = require('../../model/query.model');
+var CustomerDetail = require('../model/customer-detail.model');
+var Query = require('../model/query.model');
 exports.create = function (req, res) {
 
     CustomerDetail.findOne({
@@ -30,11 +30,11 @@ exports.create = function (req, res) {
                         }
                     });
             } else if (customerDetail != null) {
-               CustomerDetail.findOneAndUpdate({
-                    'mobileNumber': req.body.mobileNumber
+                CustomerDetail.findOneAndUpdate({
+                        'mobileNumber': req.body.mobileNumber
                     }, {
                         $push: {
-                            shootType : req.body.shootType,
+                            shootType: req.body.shootType,
                             modelType: req.body.modelType
                         }
                     },
@@ -46,7 +46,7 @@ exports.create = function (req, res) {
                         } else {
                             res.status(200).json(customerData)
                         }
-                    })     
+                    })
             }
 
         }
@@ -55,19 +55,19 @@ exports.create = function (req, res) {
 };
 
 exports.customerQuery = function (req, res) {
-    
+
     var query = new Query(req.body);
     query.mobileNumber = req.body.mobileNumber;
     query.message = req.body.message;
     query.name = req.body.name;
     query.save(
-                    function (err, queryData) {
-                        if (err) {
-                            res.status(500).send({
-                                "result": err
-                            });
-                        } else {
-                            res.status(200).json(queryData)
-                        }
-                    });
-  };
+        function (err, queryData) {
+            if (err) {
+                res.status(500).send({
+                    "result": err
+                });
+            } else {
+                res.status(200).json(queryData)
+            }
+        });
+};

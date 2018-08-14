@@ -1,8 +1,7 @@
 'use strict';
 
- var BookingDetail = require('../../model/booking-detail.model');
- var Status = require('../../model/status.model');
- var Notification = require('../../model/notification.model');
+ var BookingDetail = require('../model/booking-detail.model');
+ var Status = require('../model/status.model');
 
  exports.create = function (req, res,date,bookingOrder) {
      
@@ -14,6 +13,10 @@
   booking.productType = req.body.productType;
   booking.productDescription = req.body.productDescription;
   booking.quantityDescription = req.body.quantityDescription;
+  booking.location = req.body.location;
+  booking.bookingType = 'direct booking';
+  booking.bookingOrderId = bookingOrder;
+
   booking.save(
       function (err, bookingData) {
           if (err) { 
@@ -49,3 +52,16 @@
 };
 
 
+exports.getbookingDetails = function (req, res) {
+    BookingDetail.find({
+        'bookingOrderId': req.params.id
+       }, function (err, bookingStatus) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+            res.status(200).json(bookingStatus);
+        }
+    });
+  };

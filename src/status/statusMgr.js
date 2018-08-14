@@ -1,32 +1,32 @@
-var statusDA = require ( './statusDA');
+var statusDA = require('./statusDA');
 
 
 exports.getStatus = function (req, res) {
-    
+
     try {
         statusDA.getStatus(req, res);
     } catch (error) {
         console.log(error);
     }
-  };
+};
 
-  
 
-  exports.bookingStatus = function (req, res) {
-    
+
+exports.bookingStatus = function (req, res) {
+
     try {
         statusDA.bookingStatus(req, res);
     } catch (error) {
         console.log(error);
     }
-  };
-  
+};
 
-  exports.bookingStatusForOne = function (req, res) {
-    
+
+exports.bookingStatusForOne = function (req, res) {
+
     try {
         statusDA.bookingStatusForOne(req, res);
     } catch (error) {
         console.log(error);
     }
-  };
+};

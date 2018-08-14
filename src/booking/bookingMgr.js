@@ -2,7 +2,7 @@ var bookingDA = require('./bookingDA');
 const webpush = require('web-push');
 var zeroFill = require('zero-fill')
 /* var rn = require('random-number'); */
-var Status = require('../../model/status.model');
+var Status = require('../model/status.model');
 const vapidKeys = {
   "publicKey": "BIvwBoUek8ZLiE2HRr_srixb0Qi-Ql6CVBhhhvIuuZ5PMFYrfP0zSkNRrHD-uvIBhJ3_BDmzSFedMzu5ZuaVVRM",
   "privateKey": "WBd3Qq40-zxnCZYzSNhh8kY6dz9tIoRxS_K7wPnMaKc"
@@ -62,5 +62,14 @@ exports.create = function (req, res) {
 
   } catch (error) {
     console.log(error);
+  }
+};
+
+
+exports.getbookingDetails = function (req, res) {
+  try {
+    bookingDA.getbookingDetails(req, res);
+  } catch (error) {
+      console.log(error);
   }
 };
