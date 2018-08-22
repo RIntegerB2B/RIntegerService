@@ -2,6 +2,7 @@
 
 var CustomerDetail = require('../model/customer-detail.model');
 var Query = require('../model/query.model');
+
 exports.create = function (req, res) {
 
     CustomerDetail.findOne({
@@ -19,6 +20,7 @@ exports.create = function (req, res) {
                 customer.name = req.body.name;
                 customer.shootType = req.body.shootType;
                 customer.modelType = req.body.modelType;
+                customer.product = req.body.product;
                 customer.save(
                     function (err, customerData) {
                         if (err) {
@@ -35,7 +37,8 @@ exports.create = function (req, res) {
                     }, {
                         $push: {
                             shootType: req.body.shootType,
-                            modelType: req.body.modelType
+                            modelType: req.body.modelType,
+                            product: req.body.product
                         }
                     },
                     function (err, customerData) {
