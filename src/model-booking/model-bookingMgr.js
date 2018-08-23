@@ -23,7 +23,7 @@ exports.modelDetail = function (req, res) {
 };
 
 
-exports.getMenModels = function (req, res) {
+/* exports.getMenModels = function (req, res) {
 
     try {
         modelBookingDA.getMenModels(req, res);
@@ -37,17 +37,31 @@ exports.getWomenModels = function (req, res) {
     } catch (error) {
         console.log(error);
     }
-};
-exports.getNationalModels = function (req, res) {
+}; */
+exports.getNationalMenModels = function (req, res) {
     try {
-        modelBookingDA.getNationalModels(req, res);
+        modelBookingDA.getNationalMenModels(req, res);
     } catch (error) {
         console.log(error);
     }
 };
-exports.getInterNationalModels = function (req, res) {
+exports.getNationalWomenModels = function (req, res) {
     try {
-        modelBookingDA.getInterNationalModels(req, res);
+        modelBookingDA.getNationalWomenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.getInterNationalMenModels = function (req, res) {
+    try {
+        modelBookingDA.getInterNationalMenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.getInterNationalWomenModels = function (req, res) {
+    try {
+        modelBookingDA.getInterNationalWomenModels(req, res);
     } catch (error) {
         console.log(error);
     }

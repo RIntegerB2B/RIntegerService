@@ -76,8 +76,8 @@ exports.getWomenModels = function (req, res) {
         }
     });
 };
-exports.getNationalModels = function (req, res) {
-    ModelDetail.find({'categoryType' : 'National'}, function (err, models) {
+exports.getNationalMenModels = function (req, res) {
+    ModelDetail.find({'categoryType' : 'National', 'modelType':'Men' }, function (err, models) {
         if (err) {
             res.status(500).send({
                 "result": 0
@@ -92,8 +92,40 @@ exports.getNationalModels = function (req, res) {
         }
     });
 };
-exports.getInterNationalModels = function (req, res) {
-    ModelDetail.find({'categoryType' : 'InterNational'}, function (err, models) {
+exports.getNationalWomenModels = function (req, res) {
+    ModelDetail.find({'categoryType' : 'National', 'modelType':'Women' }, function (err, models) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            var arraylength =models.length-1;
+            for (var i= 0; i<=arraylength; i++)
+            {
+                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+            }
+            res.status(200).json(models);
+        }
+    });
+};
+exports.getInterNationalMenModels = function (req, res) {
+    ModelDetail.find({'categoryType' : 'InterNational', 'modelType':'Men' }, function (err, models) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            var arraylength =models.length-1;
+            for (var i= 0; i<=arraylength; i++)
+            {
+                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+            }
+            res.status(200).json(models);
+        }
+    });
+};
+exports.getInterNationalWomenModels = function (req, res) {
+    ModelDetail.find({'categoryType' : 'InterNational', 'modelType':'Women' }, function (err, models) {
         if (err) {
             res.status(500).send({
                 "result": 0
