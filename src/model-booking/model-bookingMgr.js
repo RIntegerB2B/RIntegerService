@@ -44,12 +44,6 @@ exports.getNationalMenModels = function (req, res) {
     } catch (error) {
         console.log(error);
     }
-<<<<<<< HEAD
-};
-exports.getNationalWomenModels = function (req, res) {
-    try {
-        modelBookingDA.getNationalWomenModels(req, res);
-=======
 };
 exports.getNationalWomenModels = function (req, res) {
     try {
@@ -61,25 +55,12 @@ exports.getNationalWomenModels = function (req, res) {
 exports.getInterNationalMenModels = function (req, res) {
     try {
         modelBookingDA.getInterNationalMenModels(req, res);
->>>>>>> 7cb030cef13237ca2f783ffe77a499b9fc361770
-    } catch (error) {
-        console.log(error);
-    }
-};
-<<<<<<< HEAD
-exports.getInterNationalMenModels = function (req, res) {
-    try {
-        modelBookingDA.getInterNationalMenModels(req, res);
     } catch (error) {
         console.log(error);
     }
 };
 exports.getInterNationalWomenModels = function (req, res) {
     try {
-=======
-exports.getInterNationalWomenModels = function (req, res) {
-    try {
->>>>>>> 7cb030cef13237ca2f783ffe77a499b9fc361770
         modelBookingDA.getInterNationalWomenModels(req, res);
     } catch (error) {
         console.log(error);
