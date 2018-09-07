@@ -1,5 +1,4 @@
 module.exports = {
      //    imageServerPath:'http://localhost/RInteger/serviceproviders/'
-        imageServerPath: 'https://rinteger.com/admin/images/'
-
-}
+        imageServerPath: process.env.IMAGE_SERVER_PATH || 'https://rinteger.com/admin/images/'
+};
