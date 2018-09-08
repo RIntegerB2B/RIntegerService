@@ -6,9 +6,9 @@ var ServiceProvider = require('../model/serviceProvider.model');
 var Status = require('../model/status.model');
 var BookingDetail = require('../model/booking-detail.model');
 
-exports.getModelDetails = function (req, res) {
+exports.allModels = function (req, res) {
 
-    ModelDetail.find({}, function (err, models) {
+    ModelDetail.find({'availability' : 1}, function (err, models) {
         if (err) {
             res.status(500).send({
                 "result": 0
@@ -17,9 +17,28 @@ exports.getModelDetails = function (req, res) {
             var arraylength =models.length-1;
             for (var i= 0; i<=arraylength; i++)
             {
-                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length-1;
+               
+              for(var j =0; j<= ecomLength; j++) {
+                models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].ecommerceImageName[j];
+              }
+              var prodLength = models[i].productImageName.length-1;
+              for(var j =0; j<= prodLength; j++) {
+                models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].productImageName[j];
+              }
+              var portLength = models[i].productImageName.length-1;
+              for(var k =0; k<= portLength; k++) {
+                models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portraitImageName[k];
+              }
+              var portfolioLength = models[i].productImageName.length-1;
+              for(var l =0; l<= portLength; l++) {
+                models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portFolioImageName[l];
+              }
             }
+            console.log(models);
             res.status(200).json(models);
+           
         }
     });
 };
@@ -35,8 +54,26 @@ exports.modelDetail = function (req, res) {
             var arraylength =models.length-1;
             for (var i= 0; i<=arraylength; i++)
             {
-                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length-1;
+               
+              for(var j =0; j<= ecomLength; j++) {
+                models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].ecommerceImageName[j];
+              }
+              var prodLength = models[i].productImageName.length-1;
+              for(var j =0; j<= prodLength; j++) {
+                models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].productImageName[j];
+              }
+              var portLength = models[i].productImageName.length-1;
+              for(var k =0; k<= portLength; k++) {
+                models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portraitImageName[k];
+              }
+              var portfolioLength = models[i].productImageName.length-1;
+              for(var l =0; l<= portLength; l++) {
+                models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portFolioImageName[l];
+              }
             }
+            
             res.status(200).json(models);
         }
     });
@@ -53,7 +90,24 @@ exports.getMenModels = function (req, res) {
             var arraylength =models.length-1;
             for (var i= 0; i<=arraylength; i++)
             {
-                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length-1;
+               
+              for(var j =0; j<= ecomLength; j++) {
+                models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].ecommerceImageName[j];
+              }
+              var prodLength = models[i].productImageName.length-1;
+              for(var j =0; j<= prodLength; j++) {
+                models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].productImageName[j];
+              }
+              var portLength = models[i].productImageName.length-1;
+              for(var k =0; k<= portLength; k++) {
+                models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portraitImageName[k];
+              }
+              var portfolioLength = models[i].productImageName.length-1;
+              for(var l =0; l<= portLength; l++) {
+                models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portFolioImageName[l];
+              }
             }
             res.status(200).json(models);
         }
@@ -77,7 +131,7 @@ exports.getWomenModels = function (req, res) {
     });
 };
 exports.getNationalMenModels = function (req, res) {
-    ModelDetail.find({'categoryType' : 'National', 'modelType':'Men' }, function (err, models) {
+    ModelDetail.find({'categoryType' : 'National', 'modelType':'Men' ,'availability' : 1 }, function (err, models) {
         if (err) {
             res.status(500).send({
                 "result": 0
@@ -86,14 +140,31 @@ exports.getNationalMenModels = function (req, res) {
             var arraylength =models.length-1;
             for (var i= 0; i<=arraylength; i++)
             {
-                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length-1;
+               
+              for(var j =0; j<= ecomLength; j++) {
+                models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].ecommerceImageName[j];
+              }
+              var prodLength = models[i].productImageName.length-1;
+              for(var j =0; j<= prodLength; j++) {
+                models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].productImageName[j];
+              }
+              var portLength = models[i].productImageName.length-1;
+              for(var k =0; k<= portLength; k++) {
+                models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portraitImageName[k];
+              }
+              var portfolioLength = models[i].productImageName.length-1;
+              for(var l =0; l<= portLength; l++) {
+                models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portFolioImageName[l];
+              }
             }
             res.status(200).json(models);
         }
     });
 };
 exports.getNationalWomenModels = function (req, res) {
-    ModelDetail.find({'categoryType' : 'National', 'modelType':'Women' }, function (err, models) {
+    ModelDetail.find({'categoryType' : 'National', 'modelType':'Women','availability' : 1 }, function (err, models) {
         if (err) {
             res.status(500).send({
                 "result": 0
@@ -102,14 +173,31 @@ exports.getNationalWomenModels = function (req, res) {
             var arraylength =models.length-1;
             for (var i= 0; i<=arraylength; i++)
             {
-                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length-1;
+               
+              for(var j =0; j<= ecomLength; j++) {
+                models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].ecommerceImageName[j];
+              }
+              var prodLength = models[i].productImageName.length-1;
+              for(var j =0; j<= prodLength; j++) {
+                models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].productImageName[j];
+              }
+              var portLength = models[i].productImageName.length-1;
+              for(var k =0; k<= portLength; k++) {
+                models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portraitImageName[k];
+              }
+              var portfolioLength = models[i].productImageName.length-1;
+              for(var l =0; l<= portLength; l++) {
+                models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portFolioImageName[l];
+              }
             }
             res.status(200).json(models);
         }
     });
 };
 exports.getInterNationalMenModels = function (req, res) {
-    ModelDetail.find({'categoryType' : 'InterNational', 'modelType':'Men' }, function (err, models) {
+    ModelDetail.find({'categoryType' : 'InterNational', 'modelType':'Men','availability' : 1 }, function (err, models) {
         if (err) {
             res.status(500).send({
                 "result": 0
@@ -118,14 +206,31 @@ exports.getInterNationalMenModels = function (req, res) {
             var arraylength =models.length-1;
             for (var i= 0; i<=arraylength; i++)
             {
-                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length-1;
+               
+              for(var j =0; j<= ecomLength; j++) {
+                models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].ecommerceImageName[j];
+              }
+              var prodLength = models[i].productImageName.length-1;
+              for(var j =0; j<= prodLength; j++) {
+                models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].productImageName[j];
+              }
+              var portLength = models[i].productImageName.length-1;
+              for(var k =0; k<= portLength; k++) {
+                models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portraitImageName[k];
+              }
+              var portfolioLength = models[i].productImageName.length-1;
+              for(var l =0; l<= portLength; l++) {
+                models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portFolioImageName[l];
+              }
             }
             res.status(200).json(models);
         }
     });
 };
 exports.getInterNationalWomenModels = function (req, res) {
-    ModelDetail.find({'categoryType' : 'InterNational', 'modelType':'Women' }, function (err, models) {
+    ModelDetail.find({'categoryType' : 'InterNational', 'modelType':'Women' ,'availability' : 1}, function (err, models) {
         if (err) {
             res.status(500).send({
                 "result": 0
@@ -134,13 +239,30 @@ exports.getInterNationalWomenModels = function (req, res) {
             var arraylength =models.length-1;
             for (var i= 0; i<=arraylength; i++)
             {
-                models[i].portfolioImageName = appSetting.imageServerPath  + models[i].userName + '/' + models[i].portfolioImageName;
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length-1;
+               
+              for(var j =0; j<= ecomLength; j++) {
+                models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].ecommerceImageName[j];
+              }
+              var prodLength = models[i].productImageName.length-1;
+              for(var j =0; j<= prodLength; j++) {
+                models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].productImageName[j];
+              }
+              var portLength = models[i].productImageName.length-1;
+              for(var k =0; k<= portLength; k++) {
+                models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portraitImageName[k];
+              }
+              var portfolioLength = models[i].productImageName.length-1;
+              for(var l =0; l<= portLength; l++) {
+                models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' +  models[i].serviceProviderName + '_models' + '/' +  models[i].userName + '/' +  models[i].portFolioImageName[l];
+              }
             }
             res.status(200).json(models);
         }
     });
 };
-/* exports.getServiceProviders = function (req, res) {
+exports.getServiceProviders = function (req, res) {
    
     ServiceProvider.find({}, function (err, sp) {
         if (err) {
@@ -151,7 +273,7 @@ exports.getInterNationalWomenModels = function (req, res) {
             res.status(200).json(sp);
         }
     });
-}; */
+};
 
 exports.create = function (req, res,date,bookingOrder) {
      

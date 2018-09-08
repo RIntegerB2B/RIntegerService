@@ -12,6 +12,14 @@ exports.getModelDetails = function (req, res) {
     }
 };
 
+exports.allModels = function (req, res) {
+
+    try {
+        modelBookingDA.allModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 exports.modelDetail = function (req, res) {
 
@@ -66,13 +74,13 @@ exports.getInterNationalWomenModels = function (req, res) {
         console.log(error);
     }
 };
-/* exports.getServiceProviders = function (req, res) {
+exports.getServiceProviders = function (req, res) {
     try {
         modelBookingDA.getServiceProviders(req, res);
     } catch (error) {
         console.log(error);
     }
-}; */
+};
 
 exports.create = function (req, res) {
 

@@ -2,11 +2,16 @@ var modelBookingMgr = require('./model-bookingMgr');
 
  module.exports = function (app) {
 
-   /*  app.route('/serviceProviders')        
+    app.route('/serviceProviders')        
     .get(modelBookingMgr.getServiceProviders);
- */
-    app.route('/modelDetails')        
-    .get(modelBookingMgr.getModelDetails); //future use /modelDetails/:id  for serviceprovider models
+
+    //all models
+    app.route('/models')       
+    .get(modelBookingMgr.allModels); 
+
+    app.route('/modelDetails/:id')         //future use /modelDetails/:id  for serviceprovider models
+    .get(modelBookingMgr.getModelDetails); 
+
 
    /*  app.route('/menmodels')        
     .get(modelBookingMgr.getMenModels);
@@ -14,6 +19,7 @@ var modelBookingMgr = require('./model-bookingMgr');
     app.route('/womenmodels')        
     .get(modelBookingMgr.getWomenModels);
  */
+
     app.route('/nationalmenmodels')        
     .get(modelBookingMgr.getNationalMenModels);
 
@@ -28,7 +34,7 @@ var modelBookingMgr = require('./model-bookingMgr');
     .get(modelBookingMgr.getInterNationalWomenModels);
 
 
-    app.route('/modelDetails/:id')        
+    app.route('/model/:id')         //model id
     .get(modelBookingMgr.modelDetail);
 
     app.route('/modelbooking')
