@@ -1,23 +1,13 @@
-var bookingDA = require('./bookingDA');
-const webpush = require('web-push');
 var zeroFill = require('zero-fill')
-var Status = require('../model/status.model');
-const vapidKeys = {
-  "publicKey": "BIvwBoUek8ZLiE2HRr_srixb0Qi-Ql6CVBhhhvIuuZ5PMFYrfP0zSkNRrHD-uvIBhJ3_BDmzSFedMzu5ZuaVVRM",
-  "privateKey": "WBd3Qq40-zxnCZYzSNhh8kY6dz9tIoRxS_K7wPnMaKc"
-};
 
+var catalogBookingDA = require('./catalogBookingDA');
+var CatalogBooking = require('../model/catalogBooking.model');
+var BookingDetails = require('../model/booking-detail.model');
 
-webpush.setVapidDetails(
-  'mailto:example@yourdomain.org',
-  vapidKeys.publicKey,
-  vapidKeys.privateKey
-);
+exports.catalogBooking = function (req, res) {
 
-exports.create = function (req, res) {
-
-  try {
-    var currentDate = new Date();
+    try {
+        var currentDate = new Date();
     var day = currentDate.getDate();
     var month = currentDate.getMonth() + 1;
     var year = currentDate.getFullYear();
@@ -34,7 +24,7 @@ exports.create = function (req, res) {
     var orderMonth = result.substr(0, 3).toUpperCase();
 
 
-    Status.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
+    BookingDetails.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
       if (err) {
         res.status(500).send({
           message: "Some error occurred while retrieving notes."
@@ -42,7 +32,7 @@ exports.create = function (req, res) {
       } else {
         if( details == null) {
          var bookingOrder =order + orderYear+ orderMonth + "0001";
-          bookingDA.create(req, res, date, bookingOrder);
+         catalogBookingDA.catalogBooking(req, res, date, bookingOrder);
         } 
         else {
         var maxID = details.bookingOrderId;
@@ -51,22 +41,12 @@ exports.create = function (req, res) {
         var result = parseInt(incOrder) + parseInt(addZero);
          var results =zeroFill(4,result);
         var bookingOrder = order +orderYear  +orderMonth  + results;
-        bookingDA.create(req, res, date, bookingOrder);
+        catalogBookingDA.catalogBooking(req, res, date, bookingOrder);
         console.log(bookingOrder);
         }
       }
     });
-
-
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-exports.getbookingDetails = function (req, res) {
-  try {
-    bookingDA.getbookingDetails(req, res);
-  } catch (error) {
-      console.log(error);
-  }
+    } catch (error) {
+        console.log(error);
+    }
 };

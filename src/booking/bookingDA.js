@@ -16,7 +16,7 @@
   booking.quantityDescription = req.body.quantityDescription;
   booking.location = req.body.location;
   booking.bookingType = 'direct booking';
-  booking.bookingOrderId = bookingOrder;
+  booking.bookingStatus = 0;
 
   booking.save(
       function (err, bookingData) {

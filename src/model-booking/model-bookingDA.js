@@ -287,6 +287,7 @@ exports.create = function (req, res,date,bookingOrder) {
     booking.modelsName = req.body.modelsName;
     booking.modelId = req.body.modelId;
     booking.bookingOrderId = bookingOrder;
+    booking.bookingStatus = 0;
 
     booking.save(
         function (err, bookingData) {

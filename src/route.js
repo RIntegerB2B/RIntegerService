@@ -2,6 +2,9 @@
  var customerRoutes = require('./customer/customerRoute');
  var statusRoutes = require('./status/statusRoute');
  var modelBookingRoutes =  require('./model-booking/model-bookingRoute');
+ var catalogBookingRoutes = require('./catalog-booking/catalogBookingRoute');
+ var registrationSetupRoutes = require('./registrationSetup/registrationSetupRoute');
+ var marketingRoutes = require('./marketinServicesBooking/marketingServicesRoute');
 
 exports.loadRoutes = function (app) {
     
@@ -9,5 +12,8 @@ exports.loadRoutes = function (app) {
     customerRoutes(app);
     statusRoutes(app);
     modelBookingRoutes(app);
+    catalogBookingRoutes(app);
+    registrationSetupRoutes(app);
+    marketingRoutes(app);
 };
 
