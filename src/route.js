@@ -4,7 +4,7 @@
  var modelBookingRoutes =  require('./model-booking/model-bookingRoute');
  var catalogBookingRoutes = require('./catalog-booking/catalogBookingRoute');
  var registrationSetupRoutes = require('./registrationSetup/registrationSetupRoute');
- var marketingRoutes = require('./marketinServicesBooking/marketingServicesRoute');
+ var marketingRoutes = require('./marketingServicesBooking/marketingServicesRoute');
 
 exports.loadRoutes = function (app) {
     

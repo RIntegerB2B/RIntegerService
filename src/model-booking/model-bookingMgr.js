@@ -1,6 +1,7 @@
 var modelBookingDA = require('./model-bookingDA');
 
 var Status = require('../model/status.model');
+var BookingDetail = require('../model/booking-detail.model');
 var zeroFill = require('zero-fill')
 
 exports.getModelDetails = function (req, res) {
@@ -103,7 +104,7 @@ exports.create = function (req, res) {
         var orderMonth = result.substr(0, 3).toUpperCase();
 
 
-        Status.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
+        BookingDetail.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
             if (err) {
                 res.status(500).send({
                     message: "Some error occurred while retrieving notes."
