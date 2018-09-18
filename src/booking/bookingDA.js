@@ -11,9 +11,9 @@ exports.create = function (req, res, date, bookingOrder) {
     booking.name = req.body.name;
     booking.bookingOrderId = bookingOrder;
     booking.location = req.body.location;
-    booking.bookingType = 'direct booking';
+    booking.bookingType = 'Direct Booking';
     booking.bookingDate = date;
-    booking.bookingStatus = 0; // waiting for approval
+    booking.bookingStatus = 'Waiting for approval'; // waiting for approval
 
     booking.save(
         function (err, bookingData) {

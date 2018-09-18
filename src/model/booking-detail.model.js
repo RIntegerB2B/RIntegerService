@@ -9,11 +9,11 @@ const BookingSchema = new mongoose.Schema({
     modelType: [String],
     productType: [String],
     location: String,
-    productDescription: String,
-    quantityDescription: String,
+    /* productDescription: String,
+    quantityDescription: String, */
     modelsName: String,
     modelId: String,
-    bookingStatus: Number,
+    bookingStatus: String,
     bookingDate: String
 });
 

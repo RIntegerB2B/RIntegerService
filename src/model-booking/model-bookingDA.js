@@ -298,10 +298,10 @@ exports.create = function (req, res, date, bookingOrder) {
     booking.mobileNumber = req.body.mobileNumber;
     booking.name = req.body.name;
     booking.location = req.body.location;
-    booking.bookingType = 'model booking';
+    booking.bookingType = 'Model Booking';
     booking.bookingOrderId = bookingOrder;
     booking.bookingDate = date;
-    booking.bookingStatus = 0;
+    booking.bookingStatus = 'Waiting for approval';;
 
     booking.save(
         function (err, bookingData) {

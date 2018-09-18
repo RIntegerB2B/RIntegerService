@@ -5,7 +5,7 @@ const RegistrationBookingSchema = new mongoose.Schema({
     name: String,
     bookingOrderId: String,
     location: String,
-    bookingDate: Date,
+    bookingDate: String,
     b2b: [String],
     b2c: [String],
     socialMedia: [String]

@@ -20,7 +20,7 @@ exports.getStatus = function (req, res) {
   };
 
   exports.bookingStatus = function (req, res) {
-    Status.find({
+    BookingDetail.find({
         'mobileNumber': req.params.no
        }, function (err, statusDetail) {
         if (err) {
