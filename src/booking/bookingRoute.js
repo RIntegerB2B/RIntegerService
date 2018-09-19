@@ -6,6 +6,5 @@
     app.route('/booking')
      .post(bookingMgr.create);
      
-     app.route('/bookingDetails/:id')        
-     .get(bookingMgr.getbookingDetails);
+    
  }

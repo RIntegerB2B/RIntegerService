@@ -1,8 +1,8 @@
-var RegistrationSetup  = require('../model/registrationSetup.model');
+var RegistrationSetup = require('../model/registrationSetup.model');
 var BookingDetail = require('../model/booking-detail.model');
 var Status = require('../model/status.model');
 
-exports.registrationAndSetup = function (req, res,date, bookingOrder) {
+exports.registrationAndSetup = function (req, res, date, bookingOrder) {
     var booking = new BookingDetail();
     booking.mobileNumber = req.body.mobileNumber;
     booking.name = req.body.name;
@@ -27,7 +27,7 @@ exports.registrationAndSetup = function (req, res,date, bookingOrder) {
                 registration.bookingOrderId = bookingOrder;
                 registration.bookingDate = date;
                 registration.b2b = req.body.b2b;
-                registration.b2c= req.body.b2c;
+                registration.b2c = req.body.b2c;
                 registration.socialMedia = req.body.socialMedia;
 
                 registration.save(
@@ -37,30 +37,10 @@ exports.registrationAndSetup = function (req, res,date, bookingOrder) {
                                 "result": err
                             });
                         } else {
-                            var statusDetail = new Status();
-                            statusDetail.bookingId = bookingData.id.toString();
-                            statusDetail.mobileNumber = req.body.mobileNumber;
-                            statusDetail.bookingOrderId = bookingOrder;
-                            statusDetail.bookingDate = date;
-                            // add the status 
-                           /*  statusDetail.order = 0;
-                            statusDetail.materialPickedUp = 0;
-                            statusDetail.shootCompleted = 0;
-                            statusDetail.imageEditing = 0;
-                            statusDetail.delivery = 0;
-                            statusDetail.payment = 0;
-                            statusDetail.materialReturn = 0; */
 
-                            statusDetail.save(
-                                function (err, statusData) {
-                                    if (err) {
-                                        res.status(500).send({
-                                            "result": err
-                                        });
-                                    } else {
-                                        res.status(200).json(bookingData);
-                                    }
-                                });
+
+                            res.status(200).json(registrationBooking);
+
                         }
                     }
                 )

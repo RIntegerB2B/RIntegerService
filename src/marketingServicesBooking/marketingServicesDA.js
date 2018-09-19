@@ -34,31 +34,7 @@ exports.marketingBooking = function (req, res,date, bookingOrder) {
                                 "result": err
                             });
                         } else {
-                            var statusDetail = new Status();
-                            statusDetail.bookingId = bookingData.id.toString();
-                            statusDetail.mobileNumber = req.body.mobileNumber;
-                            statusDetail.bookingOrderId = bookingOrder;
-                            statusDetail.bookingDate = date;
-                            // add the status 
-                           /*  statusDetail.order = 0;
-                            statusDetail.materialPickedUp = 0;
-                            statusDetail.shootCompleted = 0;
-                            statusDetail.imageEditing = 0;
-                            statusDetail.delivery = 0;
-                            statusDetail.payment = 0;
-                            statusDetail.materialReturn = 0; */
-
-                            statusDetail.save(
-                                function (err, statusData) {
-                                    if (err) {
-                                        res.status(500).send({
-                                            "result": err
-                                        });
-                                    } else {
-                                        res.status(200).json(bookingData);
-                                        console.log(bookingData);
-                                    }
-                                });
+                            res.status(200).json(marketingBooking);
                         }
                     }
                 )

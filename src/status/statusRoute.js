@@ -13,4 +13,6 @@ app.route('/bookStatus/:no')
 app.route('/bookingStatus/:no/view/:id')        
 .get(statusMgr.bookingStatusForOne);
 
+app.route('/bookingDetails/:id/view/:type')        
+.get(statusMgr.getbookingDetails);
 }

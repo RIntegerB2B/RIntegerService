@@ -63,10 +63,3 @@ exports.create = function (req, res) {
   }
 };
 
-exports.getbookingDetails = function (req, res) {
-  try {
-    bookingDA.getbookingDetails(req, res);
-  } catch (error) {
-    console.log(error);
-  }
-};

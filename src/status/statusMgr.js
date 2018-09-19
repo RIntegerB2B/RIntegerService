@@ -38,3 +38,10 @@ exports.bookingStatusForOne = function (req, res) {
         console.log(error);
     }
 };
+exports.getbookingDetails = function (req, res) {
+    try {
+        statusDA.getbookingDetails(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
