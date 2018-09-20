@@ -71,8 +71,8 @@ exports.modelDetail = function (req, res) {
                 for (var k = 0; k <= portLength; k++) {
                     models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portraitImageName[k];
                 }
-                var portfolioLength = models[i].productImageName.length - 1;
-                for (var l = 0; l <= portLength; l++) {
+                var portfolioLength = models[i].portFolioImageName.length - 1;
+                for (var l = 0; l <= portfolioLength; l++) {
                     models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portFolioImageName[l];
                 }
             }
