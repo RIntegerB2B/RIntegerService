@@ -38,9 +38,7 @@ exports.allModels = function (req, res) {
                     models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portFolioImageName[l];
                 }
             }
-            console.log(models);
             res.status(200).json(models);
-
         }
     });
 };

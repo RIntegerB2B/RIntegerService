@@ -6,6 +6,7 @@ var ModelBooking = require('../model/modelBooking.model');
 var CatalogBooking = require('../model/catalogBooking.model');
 var MarketingBooking = require('../model/marketingBooking.model');
 var RegistrationBooking = require('../model/registrationSetup.model');
+var EditingBooking = require('../model/editingBooking.model');
 
 exports.getStatus = function (req, res) {
 
@@ -123,6 +124,19 @@ else if(req.params.type === 'Marketing Booking') {
 }
 else if(req.params.type === 'Registration Booking') {
     RegistrationBooking.find({
+        'bookingOrderId': req.params.id
+    }, function (err, bookingDetail) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+            res.status(200).json(bookingDetail);
+        }
+    });
+}
+else if(req.params.type === 'Editing Booking') {
+    EditingBooking.find({
         'bookingOrderId': req.params.id
     }, function (err, bookingDetail) {
         if (err) {
