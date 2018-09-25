@@ -15,4 +15,11 @@ app.route('/bookingStatus/:no/view/:id')
 
 app.route('/bookingDetails/:id/view/:type')        
 .get(statusMgr.getbookingDetails);
+
+/* app.route('/bookingDetails/:id/active')        
+.get(statusMgr.activeBookings);
+
+
+app.route('/bookingDetails/:id/cancelled')        
+.get(statusMgr.cancelBookings); */
 }

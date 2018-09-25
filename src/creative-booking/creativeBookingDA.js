@@ -24,7 +24,12 @@ exports.creativeBooking = function (req, res,date, bookingOrder) {
                 creative.name = req.body.name;
                 creative.location = req.body.location;
                 creative.bookingOrderId = bookingOrder;
-                creative.bookingDate = date;
+                creative.bookingDate = date; 
+                 creative.productDescription = req.body.productDescription;
+                 creative.quantityDescription = req.body.quantityDescription;
+                 creative.shootPurpose = req.body.shootPurpose;
+                 creative.isVideoShoot = req.body.isVideoShoot; 
+                 creative.shootType = req.body.shootType;
                 creative.save(
                     function (err, creativeBooking) {
                         if (err) {

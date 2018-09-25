@@ -7,6 +7,10 @@ const CreativeBookingSchema = new mongoose.Schema({
     location: String,
     bookingDate: String,
     productDescription: String,
+    quantityDescription: String,
+    shootPurpose: String,
+    isVideoShoot: String,
+    shootType: String
 
 });
 

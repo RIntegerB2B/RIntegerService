@@ -6,7 +6,9 @@ const EditingBookingSchema = new mongoose.Schema({
     bookingOrderId: String,
     location: String,
     bookingDate: String,
-    productDescription: String,
+    imageDescription: String,
+    quantityDescription:  String,
+    imageRequirements:  String,
 
 });
 

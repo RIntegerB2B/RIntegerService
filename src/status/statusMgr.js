@@ -45,3 +45,19 @@ exports.getbookingDetails = function (req, res) {
       console.log(error);
     }
   };
+  
+  exports.activeBookings = function (req, res) {
+    try {
+        statusDA.activeBookings(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  exports.cancelBookings = function (req, res) {
+    try {
+        statusDA.cancelBookings(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}

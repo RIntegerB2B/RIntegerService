@@ -25,6 +25,9 @@ exports.editingBooking = function (req, res,date, bookingOrder) {
                 editing.location = req.body.location;
                 editing.bookingOrderId = bookingOrder;
                 editing.bookingDate = date;
+                editing.imageDescription = req.body.imageDescription;
+                editing.quantityDescription = req.body.quantityDescription;
+                editing.imageRequirements = req.body.imageRequirements;
                 editing.save(
                     function (err, editingBooking) {
                         if (err) {

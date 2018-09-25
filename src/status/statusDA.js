@@ -50,7 +50,6 @@ exports.bookStatus = function (req, res) {
             });
         } else {
             res.status(200).json(bookingDetail);
-            console.log(bookingDetail)
         }
     });
 };
@@ -149,4 +148,36 @@ else if(req.params.type === 'Editing Booking') {
     });
 }
 };
+exports.activeBookings = function (req, res) {
    
+    BookingDetail.find({
+        'mobileNumber': req.params.id,
+        'bookingStatus': 'Booking Approved',
+        'bookingStatus': 'Waiting for approval'
+    }, function (err, bookingDetail) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+           console.log(bookingDetail);
+           
+        }
+    });
+  };
+   
+  exports.cancelBookings = function (req, res) {
+    BookingDetail.find({
+        'mobileNumber': req.params.id,
+        'bookingStatus':'Booking Cancelled',
+    }, function (err, bookingDetail) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+           console.log(bookingDetail);
+           
+        }
+    });
+}
