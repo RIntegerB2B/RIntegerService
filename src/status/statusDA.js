@@ -149,21 +149,17 @@ else if(req.params.type === 'Editing Booking') {
 }
 };
 exports.activeBookings = function (req, res) {
-   
-    BookingDetail.find({
-        'mobileNumber': req.params.id,
-        'bookingStatus': 'Booking Approved',
-        'bookingStatus': 'Waiting for approval'
-    }, function (err, bookingDetail) {
-        if (err) {
-            res.status(500).send({
-                message: "Some error occurred while retrieving notes."
-            });
-        } else {
-           console.log(bookingDetail);
-           
-        }
-    });
+ 
+            BookingDetail.find({ $and: [
+                { $or: [{'bookingStatus': 'Booking Approved'}, {'bookingStatus': 'Waiting for approval'}] },
+                { $or: [{'mobileNumber': req.params.id}] }
+            ]  },
+            function(err,bookingDetail){
+                if(err) {
+                } else{
+                    res.status(200).send(bookingDetail);
+                }
+            })
   };
    
   exports.cancelBookings = function (req, res) {
@@ -176,8 +172,36 @@ exports.activeBookings = function (req, res) {
                 message: "Some error occurred while retrieving notes."
             });
         } else {
-           console.log(bookingDetail);
-           
+           res.status(200).json(bookingDetail);
+        }
+    });
+}
+exports.completedBookings = function (req, res) {
+    BookingDetail.find({
+        'mobileNumber': req.params.id,
+        'bookingStatus':'Booking Completed',
+    }, function (err, bookingDetail) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+           res.status(200).json(bookingDetail);
+        }
+    });
+}
+
+exports.completedOrder = function (req, res) {
+    BookingDetail.find({
+        'mobileNumber': req.params.id,
+        'bookingStatus':'Order Completed',
+    }, function (err, bookingDetail) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+           res.status(200).json(bookingDetail);
         }
     });
 }

@@ -16,10 +16,16 @@ app.route('/bookingStatus/:no/view/:id')
 app.route('/bookingDetails/:id/view/:type')        
 .get(statusMgr.getbookingDetails);
 
-/* app.route('/bookingDetails/:id/active')        
+app.route('/bookingDetails/:id/active')        
 .get(statusMgr.activeBookings);
 
 
 app.route('/bookingDetails/:id/cancelled')        
-.get(statusMgr.cancelBookings); */
+.get(statusMgr.cancelBookings);
+
+app.route('/bookingDetails/:id/completed')        
+.get(statusMgr.completedBookings);
+
+app.route('/order/:id/completed')        
+.get(statusMgr.completedOrder);
 }

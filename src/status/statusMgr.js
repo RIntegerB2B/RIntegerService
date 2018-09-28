@@ -61,3 +61,19 @@ exports.getbookingDetails = function (req, res) {
       console.log(error);
     }
 }
+
+exports.completedBookings = function (req, res) {
+    try {
+        statusDA.completedBookings(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
+
+exports.completedOrder = function (req, res) {
+    try {
+        statusDA.completedOrder(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
