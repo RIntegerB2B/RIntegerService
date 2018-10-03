@@ -39,4 +39,7 @@ var modelBookingMgr = require('./model-bookingMgr');
 
     app.route('/modelbooking')
      .post(modelBookingMgr.create);
+
+    /*  app.route('/bookingNotification')
+     .get(modelBookingMgr.bookingNotification); */
  }

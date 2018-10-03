@@ -1,6 +1,9 @@
 var Creative = require('../model/creativeBooking.model');
 var BookingDetail = require('../model/booking-detail.model');
-var Status = require('../model/status.model');
+var CreativeBookingStatus = require('../model/creativeBookingStatus.model');
+var SubscribeDetail = require('../model/subscribe.model');
+const webpush = require('web-push');
+
 
 exports.creativeBooking = function (req, res,date, bookingOrder) {
     var booking = new BookingDetail();
@@ -37,7 +40,58 @@ exports.creativeBooking = function (req, res,date, bookingOrder) {
                                 "result": err
                             });
                         } else {
-                            res.status(200).json(creativeBooking);
+                            var statusDetail = new CreativeBookingStatus();
+                            statusDetail.mobileNumber = req.body.mobileNumber;
+                            statusDetail.bookingOrderId = bookingOrder;
+                            statusDetail.bookingDate = date;
+                            statusDetail.order = 0;
+                            statusDetail.materialPickedUp = 0;
+                            statusDetail.shootPlanning = 0;
+                            statusDetail.shootCompleted = 0;
+                            statusDetail.postProductionWork = 0;
+                            statusDetail.payment = 0; 
+                            statusDetail.materialReturn = 0;
+                            statusDetail.save(
+                                function (err, statusData) {
+                                    if (err) {
+                                        res.status(500).send({
+                                            "result": err
+                                        });
+                                    } else {
+                                        
+                                        SubscribeDetail.find({
+                                            'user': 'serviceProvider'
+                                        }, function (err, subscriptionData) {
+                                            if (err) {
+                                                res.status(500).send({
+                                                    message: "Some error occurred while retrieving notes."
+                                                });
+                                            } else {
+                                                console.log('Total subscriptions', subscriptionData);
+                                    
+                                                const notificationPayload = {
+                                                    "notification": {
+                                                        "title": 'New Creative booking',
+                                                        "body": bookingOrder,
+                                                        "icon": "assets/main-page-logo-small-hat.png",
+                                                        "vibrate": [100, 50, 100],
+                                                        "data": {
+                                                            "dateOfArrival": Date.now(),
+                                                            "primaryKey": 1
+                                                        }
+                                                    }
+                                                };
+                                                Promise.all(subscriptionData.map(sub => webpush.sendNotification(
+                                                        sub.userSubscriptions, JSON.stringify(notificationPayload))))
+                                                    .then(() => res.status(200).json(bookingData))
+                                                    .catch(err => {
+                                                        console.error("Error sending notification, reason: ", err);
+                                                        res.sendStatus(500);
+                                                    });
+                                            }
+                                        });
+                                    }
+                                });
                         }
                     }
                 )

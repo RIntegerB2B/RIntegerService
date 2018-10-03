@@ -113,6 +113,7 @@ exports.create = function (req, res) {
                 if (details == null) {
                     var bookingOrder = order + orderYear + orderMonth + "0001";
                     modelBookingDA.create(req, res, date, bookingOrder);
+                 /*    modelBookingDA.bookingNotification(req, res, bookingOrder); */
                 } else {
                     var maxID = details.bookingOrderId;
                     var incOrder = maxID.slice(-4);
@@ -121,11 +122,10 @@ exports.create = function (req, res) {
                     var results = zeroFill(4, result);
                     var bookingOrder = order + orderYear + orderMonth + results;
                     modelBookingDA.create(req, res, date, bookingOrder);
-                    console.log(bookingOrder);
+                   /*  modelBookingDA.bookingNotification(req, res, bookingOrder); */
                 }
             }
         });
-
 
     } catch (error) {
         console.log(error);

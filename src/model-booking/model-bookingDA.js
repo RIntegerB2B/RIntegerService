@@ -6,6 +6,8 @@ var ServiceProvider = require('../model/serviceProvider.model');
 var Status = require('../model/status.model');
 var BookingDetail = require('../model/booking-detail.model');
 var ModelBooking = require('../model/modelBooking.model');
+var SubscribeDetail = require('../model/subscribe.model');
+const webpush = require('web-push');
 
 exports.allModels = function (req, res) {
 
@@ -341,8 +343,38 @@ exports.create = function (req, res, date, bookingOrder) {
                                 if (err) {
                                     console.log(err)
                                 } else {
-                                    res.status(200).json(bookingData);
-                                    console.log(bookingData);
+                                    SubscribeDetail.find({
+                                        'user': 'serviceProvider'
+                                    }, function (err, subscriptionData) {
+                                        if (err) {
+                                            res.status(500).send({
+                                                message: "Some error occurred while retrieving notes."
+                                            });
+                                        } else {
+                                            console.log('Total subscriptions', subscriptionData);
+                                
+                                            const notificationPayload = {
+                                                "notification": {
+                                                    "title": 'New model booking',
+                                                    "body": bookingOrder,
+                                                    "icon": "assets/main-page-logo-small-hat.png",
+                                                    "vibrate": [100, 50, 100],
+                                                    "data": {
+                                                        "dateOfArrival": Date.now(),
+                                                        "primaryKey": 1
+                                                    }
+                                                }
+                                            };
+                                            Promise.all(subscriptionData.map(sub => webpush.sendNotification(
+                                                    sub.userSubscriptions, JSON.stringify(notificationPayload))))
+                                                .then(() => res.status(200).json(bookingData))
+                                                .catch(err => {
+                                                    console.error("Error sending notification, reason: ", err);
+                                                    res.sendStatus(500);
+                                                });
+                                        }
+                                    });
+                                    /* res.status(200).json(bookingData); */
                                 }
                             })
                         }

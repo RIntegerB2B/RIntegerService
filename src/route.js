@@ -7,6 +7,7 @@
  var marketingRoutes = require('./marketingServicesBooking/marketingServicesRoute');
  var editingRoutes = require('./editingBooking/editingBookingRoute');
  var creativeRoutes = require('./creative-booking/creativeBookingRoute');
+ var notificationRoutes = require('./notification/notificationRoute');
 
 exports.loadRoutes = function (app) {
     
@@ -19,5 +20,6 @@ exports.loadRoutes = function (app) {
     marketingRoutes(app);
     editingRoutes(app);
     creativeRoutes(app);
+   /*  notificationRoutes(app); */
 };
 
