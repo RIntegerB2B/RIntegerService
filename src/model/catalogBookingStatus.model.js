@@ -9,10 +9,11 @@ const CatalogStatusSchema = new mongoose.Schema({
     productDetailsReceived: Number,
     loginCredentialsReceived: Number,
     catalogContentMaking: Number,
-    catalogUplooaded: Number,
+    catalogUploaded: Number,
     qc_processing: Number,
     inventoryUpdation: Number,
-    productLive: Number
+    productLive: Number,
+    payment: Number
 });
 
 const CatalogStatus = mongoose.model('catalogbookingstatus', CatalogStatusSchema);

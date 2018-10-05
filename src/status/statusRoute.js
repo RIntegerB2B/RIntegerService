@@ -28,4 +28,19 @@ app.route('/bookingDetails/:id/completed')
 
 app.route('/order/:id/completed')        
 .get(statusMgr.completedOrder);
+
+//editing status
+app.route('/editingStatus/:id')        
+.get(statusMgr.editingBookingStatus);
+
+
+// creative status
+app.route('/creativeStatus/:id')        
+.get(statusMgr.creativeBookingStatus);
+
+// catalog status
+app.route('/catalogStatus/:id')        
+.get(statusMgr.catalogBookingStatus);
+
+
 }

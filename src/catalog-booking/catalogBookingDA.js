@@ -51,10 +51,11 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
                             statusDetail.productDetailsReceived = 0;
                             statusDetail.loginCredentialsReceived = 0;
                             statusDetail.catalogContentMaking = 0;
-                            statusDetail.catalogUplooaded = 0; 
+                            statusDetail.catalogUploaded = 0; 
                             statusDetail.qc_processing = 0;
                             statusDetail.inventoryUpdation = 0;
                             statusDetail.productLive = 0;
+                            statusDetail.payment = 0;
                             statusDetail.save(
                                 function (err, statusData) {
                                     if (err) {

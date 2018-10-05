@@ -77,3 +77,27 @@ exports.completedOrder = function (req, res) {
       console.log(error);
     }
 }
+
+exports.editingBookingStatus = function (req, res) {
+    try {
+        statusDA.editingBookingStatus(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
+
+exports.creativeBookingStatus = function (req, res) {
+    try {
+        statusDA.creativeBookingStatus(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
+exports.catalogBookingStatus = function (req, res) {
+    try {
+        statusDA.catalogBookingStatus(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
+

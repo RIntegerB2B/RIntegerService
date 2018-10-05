@@ -67,7 +67,7 @@ exports.creativeBooking = function (req, res,date, bookingOrder) {
                                                     message: "Some error occurred while retrieving notes."
                                                 });
                                             } else {
-                                                console.log('Total subscriptions', subscriptionData);
+                                               /*  console.log('Total subscriptions', subscriptionData); */
                                     
                                                 const notificationPayload = {
                                                     "notification": {

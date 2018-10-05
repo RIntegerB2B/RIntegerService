@@ -7,7 +7,9 @@ var CatalogBooking = require('../model/catalogBooking.model');
 var MarketingBooking = require('../model/marketingBooking.model');
 var RegistrationBooking = require('../model/registrationSetup.model');
 var EditingBooking = require('../model/editingBooking.model');
-
+var EditingStatus = require('../model/editingStatus.model');
+var CreativeStatus = require('../model/creativeBookingStatus.model');
+var CatalogStatus = require('../model/catalogBookingStatus.model');
 exports.getStatus = function (req, res) {
 
     Status.findOne({
@@ -18,7 +20,6 @@ exports.getStatus = function (req, res) {
                 "result": 0
             });
         } else {
-            console.log(status);
             res.status(200).json(status)
         }
     });
@@ -202,6 +203,48 @@ exports.completedOrder = function (req, res) {
             });
         } else {
            res.status(200).json(bookingDetail);
+        }
+    });
+}
+exports.editingBookingStatus = function (req, res) {
+    EditingStatus.find({
+        'bookingOrderId': req.params.id
+    }, function (err, status) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            console.log(status);
+            res.status(200).json(status)
+        }
+    });
+}
+exports.creativeBookingStatus = function (req, res) {
+    CreativeStatus.find({
+        'bookingOrderId': req.params.id
+    }, function (err, status) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            console.log(status);
+            res.status(200).json(status)
+        }
+    });
+}
+exports.catalogBookingStatus = function (req, res) {
+    CatalogStatus.find({
+        'bookingOrderId': req.params.id
+    }, function (err, status) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            console.log(status);
+            res.status(200).json(status)
         }
     });
 }
