@@ -243,7 +243,6 @@ exports.catalogBookingStatus = function (req, res) {
                 "result": 0
             });
         } else {
-            console.log(status);
             res.status(200).json(status)
         }
     });

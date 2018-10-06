@@ -40,7 +40,6 @@ exports.editingBooking = function (req, res) {
              var results =zeroFill(4,result);
             var bookingOrder = order +orderYear  +orderMonth  + results;
             editingDA.editingBooking(req, res, date, bookingOrder);
-            console.log(bookingOrder);
             }
           }
         });
