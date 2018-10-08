@@ -10,6 +10,7 @@ var EditingBooking = require('../model/editingBooking.model');
 var EditingStatus = require('../model/editingStatus.model');
 var CreativeStatus = require('../model/creativeBookingStatus.model');
 var CatalogStatus = require('../model/catalogBookingStatus.model');
+var RegistrationStatus = require('../model/registrationStatus.model');
 exports.getStatus = function (req, res) {
 
     Status.findOne({
@@ -236,6 +237,19 @@ exports.creativeBookingStatus = function (req, res) {
 }
 exports.catalogBookingStatus = function (req, res) {
     CatalogStatus.find({
+        'bookingOrderId': req.params.id
+    }, function (err, status) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            res.status(200).json(status)
+        }
+    });
+}
+exports.registrationBookingStatus = function (req, res) {
+    RegistrationStatus.find({
         'bookingOrderId': req.params.id
     }, function (err, status) {
         if (err) {

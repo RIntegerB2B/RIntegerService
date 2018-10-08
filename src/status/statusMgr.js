@@ -100,4 +100,12 @@ exports.catalogBookingStatus = function (req, res) {
       console.log(error);
     }
 }
+exports.registrationBookingStatus = function (req, res) {
+    try {
+        statusDA.registrationBookingStatus(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
+
 

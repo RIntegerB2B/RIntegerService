@@ -1,19 +1,19 @@
-var RegistrationSetup = require('../model/registrationSetup.model');
 var BookingDetail = require('../model/booking-detail.model');
-var RegistrationStatus = require('../model/registrationStatus.model');
+var AplusBooking = require('../model/aplusBooking.model');
+var AplusStatus = require('../model/aplusBookingStatus.model');
 var SubscribeDetail = require('../model/subscribe.model');
 const webpush = require('web-push');
 
-exports.registrationAndSetup = function (req, res, date, bookingOrder) {
+exports.aplusBooking = function (req, res, date, bookingOrder) {
+
     var booking = new BookingDetail();
     booking.mobileNumber = req.body.mobileNumber;
+    booking.location = req.body.location;
     booking.name = req.body.name;
     booking.bookingOrderId = bookingOrder;
-    booking.location = req.body.location;
+    booking.bookingType = 'A+ Cataloging Booking';
     booking.bookingDate = date;
-    booking.bookingType = 'Registration Booking';
-    booking.bookingStatus = 'Waiting for approval';
-
+    booking.bookingStatus = 'Waiting for approval';// waiting for approval
 
     booking.save(
         function (err, bookingData) {
@@ -22,36 +22,43 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
                     "result": "0"
                 });
             } else {
-                var registration = new RegistrationSetup();
-                registration.mobileNumber = req.body.mobileNumber;
-                registration.name = req.body.name;
-                registration.location = req.body.location;
-                registration.bookingOrderId = bookingOrder;
-                registration.bookingDate = date;
-                registration.b2b = req.body.b2b;
-                registration.b2c = req.body.b2c;
-                registration.socialMedia = req.body.socialMedia;
-
-                registration.save(
-                    function (err, registrationBooking) {
+                var aplusBooking = new AplusBooking();
+                aplusBooking.mobileNumber = req.body.mobileNumber;
+                aplusBooking.name = req.body.name;
+                aplusBooking.location = req.body.location;
+                aplusBooking.productDescription = req.body.productDescription;
+                aplusBooking.bookingOrderId = bookingOrder;
+                aplusBooking.bookingDate = date;
+                aplusBooking.productDescription = req.body.productDescription;
+                aplusBooking.quantityDescription = req.body.quantityDescription;
+                aplusBooking.isAudioShoot = req.body.isAudioShoot;
+                aplusBooking.isVideoShoot = req.body.isVideoShoot;
+                aplusBooking.save(
+                    function (err, aplusBooking) {
                         if (err) {
                             res.status(500).send({
                                 "result": err
                             });
                         } else {
-
-                            var statusDetail = new RegistrationStatus();
+                          
+                            var statusDetail = new AplusStatus();
                             statusDetail.mobileNumber = req.body.mobileNumber;
                             statusDetail.bookingOrderId = bookingOrder;
                             statusDetail.bookingDate = date;
                             statusDetail.order = 0;
-                            statusDetail.documentsRequired = 0;
-                            statusDetail.accountCreation = 0;
-                            statusDetail.brandRegistration = 0;
-                            statusDetail.account_brandVerification = 0;
-                            statusDetail.accountActivation = 0;
-                            statusDetail.detailsForwarding = 0;
+                            statusDetail.materialPickedUp = 0;
+                            statusDetail.shootPlanning = 0;
+                            statusDetail.shootCompleted = 0;
+                            statusDetail.postProductionWork = 0;
+                            statusDetail.productDetailsReceived = 0;
+                            statusDetail.loginCredentialsReceived = 0;
+                            statusDetail.catalogContentMaking = 0;
+                            statusDetail.catalogUploaded = 0; 
+                            statusDetail.qc_processing = 0;
+                            statusDetail.inventoryUpdation = 0;
+                            statusDetail.productLive = 0;
                             statusDetail.payment = 0;
+                            statusDetail.materialReturn = 0;
                             statusDetail.save(
                                 function (err, statusData) {
                                     if (err) {
@@ -59,7 +66,6 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
                                             "result": err
                                         });
                                     } else {
-                                        
                                         SubscribeDetail.find({
                                             'user': 'serviceProvider'
                                         }, function (err, subscriptionData) {
@@ -68,11 +74,11 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
                                                     message: "Some error occurred while retrieving notes."
                                                 });
                                             } else {
-                                               /*  console.log('Total subscriptions', subscriptionData); */
+                                                console.log('Total subscriptions', subscriptionData);
                                     
                                                 const notificationPayload = {
                                                     "notification": {
-                                                        "title": 'New Registration Setup booking',
+                                                        "title": 'New A+ Cataloging Booking',
                                                         "body": bookingOrder,
                                                         "icon": "assets/main-page-logo-small-hat.png",
                                                         "vibrate": [100, 50, 100],
@@ -93,7 +99,6 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
                                         });
                                     }
                                 });
-
                         }
                     }
                 )

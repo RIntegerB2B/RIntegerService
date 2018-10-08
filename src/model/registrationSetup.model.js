@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 const RegistrationBookingSchema = new mongoose.Schema({
     mobileNumber: Number,
     name: String,

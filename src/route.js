@@ -8,6 +8,7 @@
  var editingRoutes = require('./editingBooking/editingBookingRoute');
  var creativeRoutes = require('./creative-booking/creativeBookingRoute');
  var notificationRoutes = require('./notification/notificationRoute');
+ var aplusRoutes = require('./aplus-booking/aplusBookingRoute');
 
 exports.loadRoutes = function (app) {
     
@@ -20,6 +21,7 @@ exports.loadRoutes = function (app) {
     marketingRoutes(app);
     editingRoutes(app);
     creativeRoutes(app);
+    aplusRoutes(app);
    /*  notificationRoutes(app); */
 };
 
