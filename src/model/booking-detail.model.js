@@ -5,6 +5,7 @@ const BookingSchema = new mongoose.Schema({
     name: String,
     bookingOrderId: String,
     bookingType: String,
+    emailId: String,
     shootType: [String],
     modelType: [String],
     productType: [String],

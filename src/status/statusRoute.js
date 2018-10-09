@@ -42,5 +42,7 @@ app.route('/creativeStatus/:id')
 app.route('/registrationStatus/:id')        
 .get(statusMgr.registrationBookingStatus);
 
-
+// aplus status
+app.route('/aplusStatus/:id')        
+.get(statusMgr.aplusBookingStatus);
 }

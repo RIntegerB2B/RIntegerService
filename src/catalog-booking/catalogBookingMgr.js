@@ -42,7 +42,6 @@ exports.catalogBooking = function (req, res) {
          var results =zeroFill(4,result);
         var bookingOrder = order +orderYear  +orderMonth  + results;
         catalogBookingDA.catalogBooking(req, res, date, bookingOrder);
-        console.log(bookingOrder);
         }
       }
     });

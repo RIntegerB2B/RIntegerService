@@ -29,6 +29,7 @@ exports.aplusBooking = function (req, res, date, bookingOrder) {
                 aplusBooking.productDescription = req.body.productDescription;
                 aplusBooking.bookingOrderId = bookingOrder;
                 aplusBooking.bookingDate = date;
+                aplusBooking.emailId = req.body.emailId;
                 aplusBooking.productDescription = req.body.productDescription;
                 aplusBooking.quantityDescription = req.body.quantityDescription;
                 aplusBooking.isAudioShoot = req.body.isAudioShoot;
@@ -74,7 +75,7 @@ exports.aplusBooking = function (req, res, date, bookingOrder) {
                                                     message: "Some error occurred while retrieving notes."
                                                 });
                                             } else {
-                                                console.log('Total subscriptions', subscriptionData);
+                                                /* console.log('Total subscriptions', subscriptionData); */
                                     
                                                 const notificationPayload = {
                                                     "notification": {

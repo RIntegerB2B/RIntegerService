@@ -32,7 +32,7 @@ exports.aplusBooking = function (req, res) {
       } else {
         if( details == null) {
          var bookingOrder =order + orderYear+ orderMonth + "0001";
-         catalogBookingDA.catalogBooking(req, res, date, bookingOrder);
+         aplusBookingDA.aplusBooking(req, res, date, bookingOrder);
         } 
         else {
         var maxID = details.bookingOrderId;

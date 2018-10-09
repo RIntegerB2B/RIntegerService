@@ -6,6 +6,7 @@ const CreativeBookingSchema = new mongoose.Schema({
     bookingOrderId: String,
     location: String,
     bookingDate: String,
+    emailId: String,
     productDescription: String,
     quantityDescription: String,
     shootPurpose: String,

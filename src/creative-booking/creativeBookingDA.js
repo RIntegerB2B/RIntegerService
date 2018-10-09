@@ -12,7 +12,8 @@ exports.creativeBooking = function (req, res,date, bookingOrder) {
     booking.name = req.body.name;
     booking.bookingOrderId = bookingOrder;
     booking.bookingType = 'Creative Booking';
-    booking.bookingDate = date;
+    booking.emailId = req.body.emailId;
+    booking.bookingDate = date;   
     booking.bookingStatus = 'Waiting for approval';;// waiting for approval
 
     booking.save(
@@ -28,6 +29,7 @@ exports.creativeBooking = function (req, res,date, bookingOrder) {
                 creative.location = req.body.location;
                 creative.bookingOrderId = bookingOrder;
                 creative.bookingDate = date; 
+                creative.emailId = req.body.emailId;
                  creative.productDescription = req.body.productDescription;
                  creative.quantityDescription = req.body.quantityDescription;
                  creative.shootPurpose = req.body.shootPurpose;

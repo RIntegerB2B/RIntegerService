@@ -5,6 +5,7 @@ const AplusBookingSchema = new mongoose.Schema({
     name: String,
     bookingOrderId: String,
     location: String,
+    emailId: String,
     bookingDate: String,
     productDescription: String,
     quantityDescription: String,

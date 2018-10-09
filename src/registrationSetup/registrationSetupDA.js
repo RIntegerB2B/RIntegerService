@@ -10,7 +10,8 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
     booking.name = req.body.name;
     booking.bookingOrderId = bookingOrder;
     booking.location = req.body.location;
-    booking.bookingDate = date;
+    booking.emailId = req.body.emailId;
+    booking.bookingDate = date; 
     booking.bookingType = 'Registration Booking';
     booking.bookingStatus = 'Waiting for approval';
 
@@ -26,6 +27,7 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
                 registration.mobileNumber = req.body.mobileNumber;
                 registration.name = req.body.name;
                 registration.location = req.body.location;
+                registration.emailId = req.body.emailId;
                 registration.bookingOrderId = bookingOrder;
                 registration.bookingDate = date;
                 registration.b2b = req.body.b2b;

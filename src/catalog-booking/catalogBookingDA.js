@@ -10,9 +10,10 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
     booking.mobileNumber = req.body.mobileNumber;
     booking.location = req.body.location;
     booking.name = req.body.name;
+    booking.emailId = req.body.emailId;
     booking.bookingOrderId = bookingOrder;
     booking.bookingType = 'Catalog Booking';
-    booking.bookingDate = date;
+    booking.bookingDate = date; 
     booking.bookingStatus = 'Waiting for approval';// waiting for approval
 
     booking.save(
@@ -26,6 +27,7 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
                 catalogBooking.mobileNumber = req.body.mobileNumber;
                 catalogBooking.name = req.body.name;
                 catalogBooking.location = req.body.location;
+                catalogBooking.emailId = req.body.emailId;
                 catalogBooking.productDescription = req.body.productDescription;
                 catalogBooking.bookingOrderId = bookingOrder;
                 catalogBooking.bookingDate = date;
@@ -71,7 +73,7 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
                                                     message: "Some error occurred while retrieving notes."
                                                 });
                                             } else {
-                                                console.log('Total subscriptions', subscriptionData);
+                                              /*   console.log('Total subscriptions', subscriptionData); */
                                     
                                                 const notificationPayload = {
                                                     "notification": {

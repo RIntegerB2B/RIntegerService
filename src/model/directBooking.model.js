@@ -5,6 +5,7 @@ const DirectBookingSchema = new mongoose.Schema({
     name: String,
     bookingOrderId: String,
     location: String,
+    emailId: String,
     shootType: [String],
     modelType: [String],
     productType: [String],
