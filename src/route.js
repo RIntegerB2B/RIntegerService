@@ -10,6 +10,7 @@
  var notificationRoutes = require('./notification/notificationRoute');
  var aplusRoutes = require('./aplus-booking/aplusBookingRoute');
  var itRoutes = require('./itServicesBooking/itServicesBookingRoute');
+ var digitalmgmtRoutes = require('./digitalManagementBooking/digitalMarketingRoute');
 
 exports.loadRoutes = function (app) {
     
@@ -24,6 +25,7 @@ exports.loadRoutes = function (app) {
     creativeRoutes(app);
     aplusRoutes(app);
     itRoutes(app);
+    digitalmgmtRoutes(app);
    /*  notificationRoutes(app); */
 };
 

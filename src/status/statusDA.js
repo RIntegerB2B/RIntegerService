@@ -28,15 +28,17 @@ exports.getStatus = function (req, res) {
 };
 
 exports.bookingStatus = function (req, res) {
-    BookingDetail.find({
-        'mobileNumber': req.params.no
-    }, function (err, statusDetail) {
-        if (err) {
+    BookingDetail.find(
+        {
+            'mobileNumber': req.params.no
+        }
+    ).sort({bookingOrderId:-1}).exec(function(err,details){
+        if(err){
             res.status(500).send({
                 message: "Some error occurred while retrieving notes."
             });
         } else {
-            res.status(200).json(statusDetail);
+            res.status(200).json(details);
         }
     });
 
@@ -152,30 +154,36 @@ else if(req.params.type === 'Editing Booking') {
 }
 };
 exports.activeBookings = function (req, res) {
- 
-            BookingDetail.find({ $and: [
+    BookingDetail.find(
+        { $and: [
                 { $or: [{'bookingStatus': 'Booking Approved'}, {'bookingStatus': 'Waiting for approval'}] },
                 { $or: [{'mobileNumber': req.params.id}] }
-            ]  },
-            function(err,bookingDetail){
-                if(err) {
-                } else{
-                    res.status(200).send(bookingDetail);
-                }
-            })
-  };
-   
-  exports.cancelBookings = function (req, res) {
-    BookingDetail.find({
-        'mobileNumber': req.params.id,
-        'bookingStatus':'Booking Cancelled',
-    }, function (err, bookingDetail) {
-        if (err) {
+            ]  }
+    ).sort({bookingOrderId:-1}).exec(function(err,details){
+        if(err){
             res.status(500).send({
                 message: "Some error occurred while retrieving notes."
             });
         } else {
-           res.status(200).json(bookingDetail);
+            res.status(200).json(details);
+        }
+    });
+
+  };
+   
+  exports.cancelBookings = function (req, res) {
+    BookingDetail.find(
+        {
+            'mobileNumber': req.params.id,
+            'bookingStatus':'Booking Cancelled',
+        }
+    ).sort({bookingOrderId:-1}).exec(function(err,details){
+        if(err){
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+            res.status(200).json(details);
         }
     });
 }
@@ -195,18 +203,20 @@ exports.completedBookings = function (req, res) {
 }
 
 exports.completedOrder = function (req, res) {
-    BookingDetail.find({
-        'mobileNumber': req.params.id,
-        'bookingStatus':'Order Completed',
-    }, function (err, bookingDetail) {
-        if (err) {
+    BookingDetail.find(
+        {
+            'mobileNumber': req.params.id,
+            'bookingStatus':'Order Completed',
+        }
+    ).sort({bookingOrderId:-1}).exec(function(err,details){
+        if(err){
             res.status(500).send({
                 message: "Some error occurred while retrieving notes."
             });
         } else {
-           res.status(200).json(bookingDetail);
+            res.status(200).json(details);
         }
-    });
+    })
 }
 exports.editingBookingStatus = function (req, res) {
     EditingStatus.find({
@@ -217,7 +227,6 @@ exports.editingBookingStatus = function (req, res) {
                 "result": 0
             });
         } else {
-            console.log(status);
             res.status(200).json(status)
         }
     });
