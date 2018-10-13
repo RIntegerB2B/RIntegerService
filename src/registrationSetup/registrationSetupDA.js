@@ -30,8 +30,10 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
                 registration.emailId = req.body.emailId;
                 registration.bookingOrderId = bookingOrder;
                 registration.bookingDate = date;
-                registration.b2b = req.body.b2b;
-                registration.b2c = req.body.b2c;
+                registration.b2bNational = req.body.b2bNational;
+                registration.b2cNational = req.body.b2cNational;
+                registration.b2bInterNational = req.body.b2bInterNational;
+                registration.b2cInterNational = req.body.b2cInterNational;
                 registration.socialMedia = req.body.socialMedia;
 
                 registration.save(

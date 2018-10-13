@@ -8,8 +8,10 @@ const RegistrationBookingSchema = new mongoose.Schema({
     location: String,
     emailId: String,
     bookingDate: String,
-    b2b: [String],
-    b2c: [String],
+    b2bNational: [String],
+    b2bInterNational: [String],
+    b2cNational: [String],
+    b2cInterNational: [String],
     socialMedia: [String]
 
 });
