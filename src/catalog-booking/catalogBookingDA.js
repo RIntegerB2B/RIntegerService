@@ -29,6 +29,7 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
                 catalogBooking.location = req.body.location;
                 catalogBooking.emailId = req.body.emailId;
                 catalogBooking.productDescription = req.body.productDescription;
+                catalogBooking.quantityDescription = req.body.quantityDescription;
                 catalogBooking.bookingOrderId = bookingOrder;
                 catalogBooking.bookingDate = date;
                 catalogBooking.b2bNational = req.body.b2bNational;

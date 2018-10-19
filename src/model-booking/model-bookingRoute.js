@@ -42,4 +42,10 @@ var modelBookingMgr = require('./model-bookingMgr');
 
     /*  app.route('/bookingNotification')
      .get(modelBookingMgr.bookingNotification); */
+
+
+     // view scheduled models
+
+   /*   app.route('/scheduledmodels')       
+    .get(modelBookingMgr.scheduledModels); */
  }

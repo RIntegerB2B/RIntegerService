@@ -21,7 +21,8 @@ const ModelSchema = new mongoose.Schema({
     shoeSize: String,
     serviceProviderId: String,
     serviceProviderName: String,
-    serviceProviderCompanyName: String
+    serviceProviderCompanyName: String,
+    isScheduledBooking: Boolean
 });
 
  const ModelDetail = mongoose.model('model', ModelSchema);

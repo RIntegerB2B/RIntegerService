@@ -131,3 +131,11 @@ exports.create = function (req, res) {
         console.log(error);
     }
 };
+
+/* exports.scheduledModels = function (req, res) {
+    try {
+        modelBookingDA.scheduledModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+}; */

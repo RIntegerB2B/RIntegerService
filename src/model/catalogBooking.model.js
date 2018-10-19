@@ -8,6 +8,7 @@ const CatalogBookingSchema = new mongoose.Schema({
     emailId: String,
     bookingDate: String,
     productDescription: String,
+    quantityDescription: String,
     bookingDate: String,
    b2bNational: [String],
    b2cNational: [String],
