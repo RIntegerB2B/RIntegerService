@@ -33,6 +33,10 @@ app.route('/order/:id/completed')
 app.route('/editingStatus/:id')        
 .get(statusMgr.editingBookingStatus);
 
+// catalog status
+app.route('/catalogStatus/:id')        
+.get(statusMgr.catalogBookingStatus);
+
 
 // creative status
 app.route('/creativeStatus/:id')        

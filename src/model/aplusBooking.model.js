@@ -9,7 +9,7 @@ const AplusBookingSchema = new mongoose.Schema({
     bookingDate: String,
     productDescription: String,
     quantityDescription: String,
-    isAudioShoot: String,
+    isPhotoShoot: String,
     isVideoShoot: String,
 
 });

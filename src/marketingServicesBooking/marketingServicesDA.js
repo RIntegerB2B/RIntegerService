@@ -1,6 +1,8 @@
 var Marketing  = require('../model/marketingBooking.model');
 var BookingDetail = require('../model/booking-detail.model');
 var Status = require('../model/status.model');
+var SubscribeDetail = require('../model/subscribe.model');
+const webpush = require('web-push');
 
 exports.marketingBooking = function (req, res,date, bookingOrder) {
     var booking = new BookingDetail();
@@ -36,7 +38,38 @@ exports.marketingBooking = function (req, res,date, bookingOrder) {
                                 "result": err
                             });
                         } else {
-                            res.status(200).json(marketingBooking);
+                            SubscribeDetail.find({
+                                'user': 'serviceProvider'
+                            }, function (err, subscriptionData) {
+                                if (err) {
+                                    res.status(500).send({
+                                        message: "Some error occurred while retrieving notes."
+                                    });
+                                } else {
+                                   /*  console.log('Total subscriptions', subscriptionData); */
+                        
+                                    const notificationPayload = {
+                                        "notification": {
+                                            "title": 'New Marketing Services booking',
+                                            "body": bookingOrder,
+                                            "icon": "assets/main-page-logo-small-hat.png",
+                                            "vibrate": [100, 50, 100],
+                                            "data": {
+                                                "dateOfArrival": Date.now(),
+                                                "primaryKey": 1
+                                            }
+                                        }
+                                    };
+                                    Promise.all(subscriptionData.map(sub => webpush.sendNotification(
+                                            sub.userSubscriptions, JSON.stringify(notificationPayload))))
+                                        .then(() => res.status(200).json(bookingData))
+                                        .catch(err => {
+                                            console.error("Error sending notification, reason: ", err);
+                                            res.sendStatus(500);
+                                        });
+                                }
+                            });
+                            /* res.status(200).json(marketingBooking); */
                         }
                     }
                 )

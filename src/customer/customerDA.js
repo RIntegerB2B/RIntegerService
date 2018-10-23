@@ -17,6 +17,7 @@ exports.create = function (req, res) {
                 var customer = new CustomerDetail(req.body);
                 customer.mobileNumber = req.body.mobileNumber;
                 customer.location = req.body.location;
+                customer.emailId = req.body.emailId;
                 customer.name = req.body.name;
                 customer.shootType = req.body.shootType;
                 customer.modelType = req.body.modelType;

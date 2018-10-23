@@ -12,6 +12,7 @@ exports.aplusBooking = function (req, res, date, bookingOrder) {
     booking.name = req.body.name;
     booking.bookingOrderId = bookingOrder;
     booking.bookingType = 'A+ Cataloging Booking';
+    booking.emailId = req.body.emailId;
     booking.bookingDate = date;
     booking.bookingStatus = 'Waiting for approval';// waiting for approval
 
@@ -32,7 +33,7 @@ exports.aplusBooking = function (req, res, date, bookingOrder) {
                 aplusBooking.emailId = req.body.emailId;
                 aplusBooking.productDescription = req.body.productDescription;
                 aplusBooking.quantityDescription = req.body.quantityDescription;
-                aplusBooking.isAudioShoot = req.body.isAudioShoot;
+                aplusBooking.isPhotoShoot = req.body.isPhotoShoot;
                 aplusBooking.isVideoShoot = req.body.isVideoShoot;
                 aplusBooking.save(
                     function (err, aplusBooking) {
