@@ -8,6 +8,7 @@ var BookingDetail = require('../model/booking-detail.model');
 var ScheduledBooking = require('../model/scheduledModelBooking.model');
 var SubscribeDetail = require('../model/subscribe.model');
 const webpush = require('web-push');
+var appSetting = require('../config/appSetting');
 
 exports.scheduledModels = function (req, res) {
     ModelDetail.find({
@@ -110,7 +111,7 @@ exports.create = function (req, res,date, bookingOrder) {
                                                 "notification": {
                                                     "title": 'New Scheduled model booking',
                                                     "body": bookingOrder,
-                                                    "icon": "assets/main-page-logo-small-hat.png",
+                                                    "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
                                                     "vibrate": [100, 50, 100],
                                                     "data": {
                                                         "dateOfArrival": Date.now(),

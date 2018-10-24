@@ -3,6 +3,7 @@ var BookingDetail = require('../model/booking-detail.model');
 var SubscribeDetail = require('../model/subscribe.model');
 const webpush = require('web-push');
 var EditingStatus = require('../model/editingStatus.model');
+var appSetting = require('../config/appSetting');
 
 exports.editingBooking = function (req, res,date, bookingOrder) {
     var booking = new BookingDetail();
@@ -68,7 +69,7 @@ exports.editingBooking = function (req, res,date, bookingOrder) {
                                                 "notification": {
                                                     "title": 'New Image Editing booking',
                                                     "body": bookingOrder,
-                                                    "icon": "assets/main-page-logo-small-hat.png",
+                                                    "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
                                                     "vibrate": [100, 50, 100],
                                                     "data": {
                                                         "dateOfArrival": Date.now(),

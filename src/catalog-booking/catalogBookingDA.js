@@ -3,6 +3,7 @@ var CatalogBooking = require('../model/catalogBooking.model');
 var CatalogingStatus = require('../model/catalogBookingStatus.model');
 var SubscribeDetail = require('../model/subscribe.model');
 const webpush = require('web-push');
+var appSetting = require('../config/appSetting');
 
 exports.catalogBooking = function (req, res, date, bookingOrder) {
 
@@ -13,8 +14,8 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
     booking.emailId = req.body.emailId;
     booking.bookingOrderId = bookingOrder;
     booking.bookingType = 'Catalog Booking';
-    booking.bookingDate = date; 
-    booking.bookingStatus = 'Waiting for approval';// waiting for approval
+    booking.bookingDate = date;
+    booking.bookingStatus = 'Waiting for approval'; // waiting for approval
 
     booking.save(
         function (err, bookingData) {
@@ -44,7 +45,7 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
                                 "result": err
                             });
                         } else {
-                          
+
                             var statusDetail = new CatalogingStatus();
                             statusDetail.mobileNumber = req.body.mobileNumber;
                             statusDetail.bookingOrderId = bookingOrder;
@@ -54,7 +55,7 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
                             statusDetail.productDetailsReceived = 0;
                             statusDetail.loginCredentialsReceived = 0;
                             statusDetail.catalogContentMaking = 0;
-                            statusDetail.catalogUploaded = 0; 
+                            statusDetail.catalogUploaded = 0;
                             statusDetail.qc_processing = 0;
                             statusDetail.inventoryUpdation = 0;
                             statusDetail.productLive = 0;
@@ -74,13 +75,13 @@ exports.catalogBooking = function (req, res, date, bookingOrder) {
                                                     message: "Some error occurred while retrieving notes."
                                                 });
                                             } else {
-                                              /*   console.log('Total subscriptions', subscriptionData); */
-                                    
+                                                /*   console.log('Total subscriptions', subscriptionData); */
+
                                                 const notificationPayload = {
                                                     "notification": {
                                                         "title": 'New Cataloging Booking',
                                                         "body": bookingOrder,
-                                                        "icon": "assets/main-page-logo-small-hat.png",
+                                                        "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
                                                         "vibrate": [100, 50, 100],
                                                         "data": {
                                                             "dateOfArrival": Date.now(),

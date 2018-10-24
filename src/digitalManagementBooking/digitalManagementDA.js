@@ -2,6 +2,7 @@ var DigitalMgmt = require('../model/digitalMgmtBooking.model');
 var BookingDetail = require('../model/booking-detail.model');
 var SubscribeDetail = require('../model/subscribe.model');
 const webpush = require('web-push');
+var appSetting = require('../config/appSetting');
 
 exports.digitalMgmtBooking = function (req, res,date, bookingOrder) {
     var booking = new BookingDetail();
@@ -55,7 +56,7 @@ exports.digitalMgmtBooking = function (req, res,date, bookingOrder) {
                                         "notification": {
                                             "title": 'New  Digital Business Management booking',
                                             "body": bookingOrder,
-                                            "icon": "assets/main-page-logo-small-hat.png",
+                                            "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
                                             "vibrate": [100, 50, 100],
                                             "data": {
                                                 "dateOfArrival": Date.now(),

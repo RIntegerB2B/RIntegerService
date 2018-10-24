@@ -3,7 +3,7 @@ var AplusBooking = require('../model/aplusBooking.model');
 var AplusStatus = require('../model/aplusBookingStatus.model');
 var SubscribeDetail = require('../model/subscribe.model');
 const webpush = require('web-push');
-var appSetting = require('../../config/appSetting');
+var appSetting = require('../config/appSetting');
 
 exports.aplusBooking = function (req, res, date, bookingOrder) {
 
