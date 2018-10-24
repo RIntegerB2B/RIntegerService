@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 const ModelSchema = new mongoose.Schema({
     userName: String,
     description: String,
-    availability: Boolean,
+    availability: String,
     mobileNumber: String,
     emailId: String,
     faceBook: String,

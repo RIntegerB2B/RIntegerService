@@ -13,7 +13,6 @@ var appSetting = require('../config/appSetting');
 exports.allModels = function (req, res) {
 
     ModelDetail.find({
-        'availability': 1
     }, function (err, models) {
         if (err) {
             res.status(500).send({
