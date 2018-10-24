@@ -82,7 +82,7 @@ exports.aplusBooking = function (req, res, date, bookingOrder) {
                                                     "notification": {
                                                         "title": 'New A+ Cataloging Booking',
                                                         "body": bookingOrder,
-                                                        "icon": "assets/images/Shoot.jpg",
+                                                        "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
                                                         "vibrate": [100, 50, 100],
                                                         "data": {
                                                             "dateOfArrival": Date.now(),
