@@ -60,3 +60,32 @@ exports.create = function (req, res) {
         console.log(error);
     }
 };
+
+exports.getNationalMenModels = function (req, res) {
+    try {
+        scheduledBookingDA.getNationalMenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.getNationalWomenModels = function (req, res) {
+    try {
+        scheduledBookingDA.getNationalWomenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.getInterNationalMenModels = function (req, res) {
+    try {
+        scheduledBookingDA.getInterNationalMenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.getInterNationalWomenModels = function (req, res) {
+    try {
+        scheduledBookingDA.getInterNationalWomenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};

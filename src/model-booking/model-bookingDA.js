@@ -139,7 +139,6 @@ exports.getNationalMenModels = function (req, res) {
     ModelDetail.find({
         'categoryType': 'National',
         'modelType': 'Men',
-        'availability': 1
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -175,7 +174,6 @@ exports.getNationalWomenModels = function (req, res) {
     ModelDetail.find({
         'categoryType': 'National',
         'modelType': 'Women',
-        'availability': 1
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -210,8 +208,7 @@ exports.getNationalWomenModels = function (req, res) {
 exports.getInterNationalMenModels = function (req, res) {
     ModelDetail.find({
         'categoryType': 'InterNational',
-        'modelType': 'Men',
-        'availability': 1
+        'modelType': 'Men'
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -247,7 +244,6 @@ exports.getInterNationalWomenModels = function (req, res) {
     ModelDetail.find({
         'categoryType': 'InterNational',
         'modelType': 'Women',
-        'availability': 1
     }, function (err, models) {
         if (err) {
             res.status(500).send({

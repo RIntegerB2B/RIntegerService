@@ -136,3 +136,149 @@ exports.create = function (req, res,date, bookingOrder) {
             }
         });
 };
+
+exports.getNationalMenModels = function (req, res) {
+    ModelDetail.find({
+        'categoryType': 'National',
+        'modelType': 'Men',
+        'isScheduledBooking': true
+    }, function (err, models) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            var arraylength = models.length - 1;
+            for (var i = 0; i <= arraylength; i++) {
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+                var ecomLength = models[i].ecommerceImageName.length - 1;
+
+                for (var j = 0; j <= ecomLength; j++) {
+                    models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].ecommerceImageName[j];
+                }
+                var prodLength = models[i].productImageName.length - 1;
+                for (var j = 0; j <= prodLength; j++) {
+                    models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].productImageName[j];
+                }
+                var portLength = models[i].productImageName.length - 1;
+                for (var k = 0; k <= portLength; k++) {
+                    models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portraitImageName[k];
+                }
+                var portfolioLength = models[i].productImageName.length - 1;
+                for (var l = 0; l <= portLength; l++) {
+                    models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portFolioImageName[l];
+                }
+            }
+            res.status(200).json(models);
+        }
+    });
+};
+exports.getNationalWomenModels = function (req, res) {
+    ModelDetail.find({
+        'categoryType': 'National',
+        'modelType': 'Women',
+        'isScheduledBooking': true
+    }, function (err, models) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            var arraylength = models.length - 1;
+            for (var i = 0; i <= arraylength; i++) {
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+                var ecomLength = models[i].ecommerceImageName.length - 1;
+
+                for (var j = 0; j <= ecomLength; j++) {
+                    models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].ecommerceImageName[j];
+                }
+                var prodLength = models[i].productImageName.length - 1;
+                for (var j = 0; j <= prodLength; j++) {
+                    models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].productImageName[j];
+                }
+                var portLength = models[i].productImageName.length - 1;
+                for (var k = 0; k <= portLength; k++) {
+                    models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portraitImageName[k];
+                }
+                var portfolioLength = models[i].productImageName.length - 1;
+                for (var l = 0; l <= portLength; l++) {
+                    models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portFolioImageName[l];
+                }
+            }
+            res.status(200).json(models);
+        }
+    });
+};
+exports.getInterNationalMenModels = function (req, res) {
+    ModelDetail.find({
+        'categoryType': 'InterNational',
+        'modelType': 'Men',
+        'isScheduledBooking': true
+    }, function (err, models) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            var arraylength = models.length - 1;
+            for (var i = 0; i <= arraylength; i++) {
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+                var ecomLength = models[i].ecommerceImageName.length - 1;
+
+                for (var j = 0; j <= ecomLength; j++) {
+                    models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].ecommerceImageName[j];
+                }
+                var prodLength = models[i].productImageName.length - 1;
+                for (var j = 0; j <= prodLength; j++) {
+                    models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].productImageName[j];
+                }
+                var portLength = models[i].productImageName.length - 1;
+                for (var k = 0; k <= portLength; k++) {
+                    models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portraitImageName[k];
+                }
+                var portfolioLength = models[i].productImageName.length - 1;
+                for (var l = 0; l <= portLength; l++) {
+                    models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portFolioImageName[l];
+                }
+            }
+            res.status(200).json(models);
+        }
+    });
+};
+exports.getInterNationalWomenModels = function (req, res) {
+    ModelDetail.find({
+        'categoryType': 'InterNational',
+        'modelType': 'Women',
+        'isScheduledBooking': true
+    }, function (err, models) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            var arraylength = models.length - 1;
+            for (var i = 0; i <= arraylength; i++) {
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+                var ecomLength = models[i].ecommerceImageName.length - 1;
+
+                for (var j = 0; j <= ecomLength; j++) {
+                    models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].ecommerceImageName[j];
+                }
+                var prodLength = models[i].productImageName.length - 1;
+                for (var j = 0; j <= prodLength; j++) {
+                    models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].productImageName[j];
+                }
+                var portLength = models[i].productImageName.length - 1;
+                for (var k = 0; k <= portLength; k++) {
+                    models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portraitImageName[k];
+                }
+                var portfolioLength = models[i].productImageName.length - 1;
+                for (var l = 0; l <= portLength; l++) {
+                    models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portFolioImageName[l];
+                }
+            }
+            res.status(200).json(models);
+        }
+    });
+};
+
