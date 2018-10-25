@@ -85,7 +85,7 @@ exports.modelDetail = function (req, res) {
 exports.getMenModels = function (req, res) {
 
     ModelDetail.find({
-        'modelType': 'Men'
+        'categoryType': 'Men'
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -120,7 +120,7 @@ exports.getMenModels = function (req, res) {
 
 exports.getWomenModels = function (req, res) {
     ModelDetail.find({
-        'modelType': 'Women',
+        'categoryType': 'Women',
         'availability':'Yes'
     }, function (err, models) {
         if (err) {
@@ -137,9 +137,9 @@ exports.getWomenModels = function (req, res) {
     });
 };
 exports.getNationalMenModels = function (req, res) {
-    ModelDetail.find({
-        'categoryType': 'National',
-        'modelType': 'Men',
+    ModelDetail.find({ 
+        'modelType': 'National',
+        'categoryType': 'Men',
         'availability':'Yes'
     }, function (err, models) {
         if (err) {
@@ -174,8 +174,8 @@ exports.getNationalMenModels = function (req, res) {
 };
 exports.getNationalWomenModels = function (req, res) {
     ModelDetail.find({
-        'categoryType': 'National',
-        'modelType': 'Women',
+        'modelType': 'National',
+        'categoryType': 'Women',
         'availability':'Yes'
     }, function (err, models) {
         if (err) {
@@ -210,8 +210,8 @@ exports.getNationalWomenModels = function (req, res) {
 };
 exports.getInterNationalMenModels = function (req, res) {
     ModelDetail.find({
-        'categoryType': 'InterNational',
-        'modelType': 'Men',
+        'modelType': 'InterNational',
+        'categoryType': 'Men',
         'availability':'Yes'
     }, function (err, models) {
         if (err) {
@@ -246,8 +246,8 @@ exports.getInterNationalMenModels = function (req, res) {
 };
 exports.getInterNationalWomenModels = function (req, res) {
     ModelDetail.find({
-        'categoryType': 'InterNational',
-        'modelType': 'Women',
+        'modelType': 'InterNational',
+        'categoryType': 'Women',
         'availability':'Yes'
     }, function (err, models) {
         if (err) {
