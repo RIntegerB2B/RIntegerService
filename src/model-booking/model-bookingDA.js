@@ -12,7 +12,7 @@ var appSetting = require('../config/appSetting');
 
 exports.allModels = function (req, res) {
 
-    ModelDetail.find({
+    ModelDetail.find({'availability':'Yes'
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -120,7 +120,8 @@ exports.getMenModels = function (req, res) {
 
 exports.getWomenModels = function (req, res) {
     ModelDetail.find({
-        'modelType': 'Women'
+        'modelType': 'Women',
+        'availability':'Yes'
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -139,6 +140,7 @@ exports.getNationalMenModels = function (req, res) {
     ModelDetail.find({
         'categoryType': 'National',
         'modelType': 'Men',
+        'availability':'Yes'
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -174,6 +176,7 @@ exports.getNationalWomenModels = function (req, res) {
     ModelDetail.find({
         'categoryType': 'National',
         'modelType': 'Women',
+        'availability':'Yes'
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -208,7 +211,8 @@ exports.getNationalWomenModels = function (req, res) {
 exports.getInterNationalMenModels = function (req, res) {
     ModelDetail.find({
         'categoryType': 'InterNational',
-        'modelType': 'Men'
+        'modelType': 'Men',
+        'availability':'Yes'
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -244,6 +248,7 @@ exports.getInterNationalWomenModels = function (req, res) {
     ModelDetail.find({
         'categoryType': 'InterNational',
         'modelType': 'Women',
+        'availability':'Yes'
     }, function (err, models) {
         if (err) {
             res.status(500).send({
@@ -303,7 +308,6 @@ exports.create = function (req, res, date, bookingOrder) {
     booking.save(
         function (err, bookingData) {
             if (err) {
-                console.log(err);
                 res.status(500).send({
                     "result": "0"
                 });
