@@ -19,9 +19,10 @@ exports.create = function (req, res) {
                 customer.location = req.body.location;
                 customer.emailId = req.body.emailId;
                 customer.name = req.body.name;
-                customer.shootType = req.body.shootType;
-                customer.modelType = req.body.modelType;
-                customer.product = req.body.product;
+                customer.bookingType.push = req.body.bookingType;
+                customer.shootType.push= req.body.shootType;
+                customer.modelType.push= req.body.modelType;
+                customer.product.push = req.body.product;
                 customer.save(
                     function (err, customerData) {
                         if (err) {

@@ -141,8 +141,8 @@ exports.create = function (req, res,date, bookingOrder) {
 
 exports.getNationalMenModels = function (req, res) {
     ModelDetail.find({
-        'categoryType': 'National',
-        'modelType': 'Men',
+        'modelType': 'National',
+        'categoryType': 'Men',
         'isScheduledBooking': true
     }, function (err, models) {
         if (err) {
@@ -177,8 +177,8 @@ exports.getNationalMenModels = function (req, res) {
 };
 exports.getNationalWomenModels = function (req, res) {
     ModelDetail.find({
-        'categoryType': 'National',
-        'modelType': 'Women',
+        'modelType': 'National',
+        'categoryType': 'Women',
         'isScheduledBooking': true
     }, function (err, models) {
         if (err) {
@@ -213,8 +213,8 @@ exports.getNationalWomenModels = function (req, res) {
 };
 exports.getInterNationalMenModels = function (req, res) {
     ModelDetail.find({
-        'categoryType': 'InterNational',
-        'modelType': 'Men',
+        'modelType': 'InterNational',
+        'categoryType': 'Men',
         'isScheduledBooking': true
     }, function (err, models) {
         if (err) {
@@ -249,8 +249,8 @@ exports.getInterNationalMenModels = function (req, res) {
 };
 exports.getInterNationalWomenModels = function (req, res) {
     ModelDetail.find({
-        'categoryType': 'InterNational',
-        'modelType': 'Women',
+        'modelType': 'InterNational',
+        'categoryType': 'Women',
         'isScheduledBooking': true
     }, function (err, models) {
         if (err) {
