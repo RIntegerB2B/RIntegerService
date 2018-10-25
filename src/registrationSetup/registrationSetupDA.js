@@ -82,6 +82,7 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
                                                         "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
                                                         "vibrate": [100, 50, 100],
                                                         "data": {
+                                                            "url": 'https://rinteger.com/admin/registrationbooking',
                                                             "dateOfArrival": Date.now(),
                                                             "primaryKey": 1
                                                         }

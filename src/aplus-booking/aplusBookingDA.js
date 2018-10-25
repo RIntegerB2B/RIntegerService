@@ -86,6 +86,7 @@ exports.aplusBooking = function (req, res, date, bookingOrder) {
                                                         "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
                                                         "vibrate": [100, 50, 100],
                                                         "data": {
+                                                            "url": 'https://rinteger.com/admin/aplusbooking',
                                                             "dateOfArrival": Date.now(),
                                                             "primaryKey": 1
                                                         }
