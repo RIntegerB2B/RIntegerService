@@ -114,6 +114,21 @@ exports.aplusBookingStatus = function (req, res) {
       console.log(error);
     }
 }
+exports.register = function (req, res) {
+    try {
+        statusDA.register(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
+exports.signin = function (req, res) {
+    try {
+        statusDA.signin(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
+
 
 
 

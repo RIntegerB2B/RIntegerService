@@ -40,7 +40,8 @@ exports.create = function (req, res) {
                         $push: {
                             shootType: req.body.shootType,
                             modelType: req.body.modelType,
-                            product: req.body.product
+                            product: req.body.product,
+                            bookingType: req.body.bookingType
                         }
                     },
                     function (err, customerData) {

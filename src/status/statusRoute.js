@@ -49,4 +49,12 @@ app.route('/registrationStatus/:id')
 // aplus status
 app.route('/aplusStatus/:id')        
 .get(statusMgr.aplusBookingStatus);
+
+// accoint -mgmt booking customer register
+
+app.route('/register')
+.post(statusMgr.register);
+
+app.route('/signin')
+.post(statusMgr.signin);
 }

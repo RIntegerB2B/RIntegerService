@@ -4,6 +4,7 @@ var ShootType = require('./shootType.model');
 const CustomerSchema = new mongoose.Schema({
     mobileNumber: Number,
     name: String,
+    password: String,
     location: String,
     emailId: String,
     bookingType: [String],
