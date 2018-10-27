@@ -57,4 +57,9 @@ app.route('/register')
 
 app.route('/signin')
 .post(statusMgr.signin);
+
+
+// account-mgmt status
+app.route('/accountmgmtstatus/:id')        
+.get(statusMgr.accountMgmtStatus);
 }

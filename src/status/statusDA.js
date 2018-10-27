@@ -14,6 +14,7 @@ var CatalogStatus = require('../model/catalogBookingStatus.model');
 var RegistrationStatus = require('../model/registrationStatus.model');
 var AplusStatus = require('../model/aplusBookingStatus.model');
 var CustomerDetail = require('../model/customer-detail.model');
+var AccountMgmtStatus = require('../model/digitalmgmtstatus.model');
 
 
 exports.getStatus = function (req, res) {
@@ -324,12 +325,18 @@ exports.register = function (req, res) {
                     if (err) {
                         res.status(500).send(err);
                     } else {
-                        res.status(200).send(registeredData);
+                        res.status(200).json(registeredData);
                     }
                 });
-            } 
-            else{
-                res.status(200).send(userDetail);
+            } else {
+                userDetail.password = req.body.password;
+                userDetail.save({}, function (err, details) {
+                    if (err) {
+                        res.status(500).send(err);
+                    } else {
+                        res.status(200).json(details);
+                    }
+                })
             }
         }
     });
@@ -337,15 +344,49 @@ exports.register = function (req, res) {
 exports.signin = function (req, res) {
     CustomerDetail.findOne({
         'mobileNumber': req.body.mobileNumber,
-        'password':req.body.password
+        'password': req.body.password
     }, function (err, userDetail) {
         if (err) {
             res.status(500).send({
                 message: "Some error occurred while retrieving notes."
             });
         } else {
-            res.status(200).json(userDetail);
-            console.log(userDetail);
+            if (userDetail === null) {
+                CustomerDetail.findOne({
+                    'mobileNumber': req.body.mobileNumber,
+                }, function (err, userDetails) {
+                    if (err) {
+                        res.status(500).send({
+                            message: "Some error occurred while retrieving data."
+                        });
+                    } else {
+                        if (userDetails === null) {
+                            res.status(200).json(userDetail)
+                        } else if (userDetails !== null) {
+                            res.status(200).json(userDetails)
+                        } /* else if (userDetails.password === undefined) {
+                            res.status(200).json(userDetails)
+                        } else if (userDetails.password !== undefined) {
+                            res.status(200).json(userDetail)
+                        } */
+                    }
+                });
+            } else if (userDetail !== null) {
+                res.status(200).json(userDetail)
+            } 
+        }
+    });
+}
+exports.accountMgmtStatus = function (req, res) {
+    AccountMgmtStatus.find({
+        'bookingOrderId': req.params.id
+    }, function (err, status) {
+        if (err) {
+            res.status(500).send({
+                "result": 0
+            });
+        } else {
+            res.status(200).json(status)
         }
     });
 }

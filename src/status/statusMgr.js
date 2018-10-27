@@ -128,6 +128,13 @@ exports.signin = function (req, res) {
       console.log(error);
     }
 }
+exports.accountMgmtStatus = function (req, res) {
+    try {
+        statusDA.accountMgmtStatus(req, res);
+    } catch (error) {
+      console.log(error);
+    }
+}
 
 
 
