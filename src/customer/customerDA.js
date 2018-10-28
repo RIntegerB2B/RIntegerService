@@ -2,6 +2,9 @@
 
 var CustomerDetail = require('../model/customer-detail.model');
 var Query = require('../model/query.model');
+var SubscribeDetail = require('../model/subscribe.model');
+const webpush = require('web-push');
+var appSetting = require('../config/appSetting');
 
 exports.create = function (req, res) {
 
@@ -61,12 +64,12 @@ exports.create = function (req, res) {
 };
 
 exports.customerQuery = function (req, res) {
-
     var query = new Query(req.body);
     query.mobileNumber = req.body.mobileNumber;
     query.message = req.body.message;
     query.emailId = req.body.emailId;
     query.name = req.body.name;
+    query.isHandled = 0;
     query.save(
         function (err, queryData) {
             if (err) {
