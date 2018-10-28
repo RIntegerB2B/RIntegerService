@@ -65,6 +65,7 @@ exports.customerQuery = function (req, res) {
     var query = new Query(req.body);
     query.mobileNumber = req.body.mobileNumber;
     query.message = req.body.message;
+    query.emailId = req.body.emailId;
     query.name = req.body.name;
     query.save(
         function (err, queryData) {
