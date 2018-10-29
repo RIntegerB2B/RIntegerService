@@ -77,7 +77,38 @@ exports.customerQuery = function (req, res) {
                     "result": err
                 });
             } else {
-                res.status(200).json(queryData)
+                SubscribeDetail.find({
+                    'user': 'serviceProvider'
+                }, function (err, subscriptionData) {
+                    if (err) {
+                        res.status(500).send({
+                            message: "Some error occurred while retrieving notes."
+                        });
+                    } else {
+                        /*   console.log('Total subscriptions', subscriptionData); */
+
+                        const notificationPayload = {
+                            "notification": {
+                                "title": 'New Contact Request',
+                                "body":  req.body.mobileNumber,
+                                "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
+                                "vibrate": [100, 50, 100],
+                                "data": {
+                                    "url": 'https://rinteger.com/admin/navheader/contact',
+                                    "dateOfArrival": Date.now(),
+                                    "primaryKey": 1
+                                }
+                            }
+                        };
+                        Promise.all(subscriptionData.map(sub => webpush.sendNotification(
+                                sub.userSubscriptions, JSON.stringify(notificationPayload))))
+                            .then(() => res.status(200).json(queryData))
+                            .catch(err => {
+                                console.error("Error sending notification, reason: ", err);
+                                res.sendStatus(500);
+                            });
+                    }
+                });
             }
         });
 };
