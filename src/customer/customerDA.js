@@ -23,8 +23,8 @@ exports.create = function (req, res) {
                 customer.emailId = req.body.emailId;
                 customer.name = req.body.name;
                 customer.bookingType.push = req.body.bookingType;
-                customer.shootType.push= req.body.shootType;
-                customer.modelType.push= req.body.modelType;
+                customer.shootType.push = req.body.shootType;
+                customer.modelType.push = req.body.modelType;
                 customer.product.push = req.body.product;
                 customer.save(
                     function (err, customerData) {
