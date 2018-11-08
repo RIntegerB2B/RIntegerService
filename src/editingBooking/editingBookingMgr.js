@@ -22,27 +22,28 @@ exports.editingBooking = function (req, res) {
         var orderMonth = result.substr(0, 3).toUpperCase();
     
     
-        BookingDetails.findOne({}).select().sort('-bookingOrderId').limit(1).exec(function (err, details) {
-          if (err) {
+        BookingDetails.find().select().exec(function (err, details) {
+          if(err) {
             res.status(500).send({
               message: "Some error occurred while retrieving notes."
             });
-          } else {
-            if( details == null) {
-             var bookingOrder =order + orderYear+ orderMonth + "0001";
-             editingDA.editingBooking(req, res, date, bookingOrder);
-            } 
-            else {
-            var maxID = details.bookingOrderId;
-            var incOrder = maxID.slice(-4);
-            var addZero =zeroFill(4, 1);
-            var result = parseInt(incOrder) + parseInt(addZero);
-             var results =zeroFill(4,result);
-            var bookingOrder = order +orderYear  +orderMonth  + results;
-            editingDA.editingBooking(req, res, date, bookingOrder);
+          } else{
+             if (details == null) {
+              var bookingOrder = order + orderYear + orderMonth + "0001";
+              editingDA.editingBooking(req, res, date, bookingOrder);
+            } else {
+              var arrayLength = details.length - 1;
+            var maxID =details[arrayLength].bookingOrderId.substr(10,4);
+              var incOrder = maxID.slice(-4);
+              var addZero = zeroFill(4, 1);
+              var result = parseInt(incOrder) + parseInt(addZero);
+              var results = zeroFill(4, result);
+              var bookingOrder = order + orderYear + orderMonth + results;
+              editingDA.editingBooking(req, res, date, bookingOrder);
             }
           }
-        });
+          
+        })
     } catch (error) {
         console.log(error);
     }
