@@ -11,7 +11,7 @@ exports.digitalMgmtBooking = function (req, res,date, bookingOrder) {
     booking.name = req.body.name;
     booking.emailId = req.body.emailId;
     booking.bookingOrderId = bookingOrder;
-    booking.bookingType = 'Digital Business Management Booking';
+    booking.bookingType = 'Account Management Booking';
     booking.bookingDate = date;
     booking.bookingStatus = 'Waiting for approval';;// waiting for approval
 
@@ -54,7 +54,7 @@ exports.digitalMgmtBooking = function (req, res,date, bookingOrder) {
                         
                                     const notificationPayload = {
                                         "notification": {
-                                            "title": 'New  Digital Business Management booking',
+                                            "title": 'New Account Management Booking',
                                             "body": bookingOrder,
                                             "icon": req.body.imageUrl != null ? req.body.imageUrl : appSetting.imageUrl,
                                             "vibrate": [100, 50, 100],

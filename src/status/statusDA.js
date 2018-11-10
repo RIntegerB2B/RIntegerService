@@ -79,7 +79,7 @@ exports.bookingStatusForOne = function (req, res) {
     });
 };
 exports.getbookingDetails = function (req, res) {
-    if (req.params.type === 'Direct Booking') {
+    if (req.params.type === 'Product Booking') {
         BookingDetail.find({
             'bookingOrderId': req.params.id
         }, function (err, bookingDetail) {

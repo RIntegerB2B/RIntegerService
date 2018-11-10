@@ -41,7 +41,7 @@ exports.create = function (req, res) {
           message: "Some error occurred while retrieving notes."
         });
       } else{
-         if (details == null) {
+         if (details[0] == null) {
           var bookingOrder = order + orderYear + orderMonth + "0001";
           bookingDA.create(req, res, date, bookingOrder);
         } else {
