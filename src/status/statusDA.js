@@ -14,7 +14,7 @@ var CatalogStatus = require('../model/catalogBookingStatus.model');
 var RegistrationStatus = require('../model/registrationStatus.model');
 var AplusStatus = require('../model/aplusBookingStatus.model');
 var CustomerDetail = require('../model/customer-detail.model');
-var AccountMgmtStatus = require('../model/digitalmgmtstatus.model');
+var AccountMgmtStatus = require('../model/activitylog.model');
 
 
 exports.getStatus = function (req, res) {
@@ -344,38 +344,39 @@ exports.register = function (req, res) {
 exports.signin = function (req, res) {
     CustomerDetail.findOne({
         'mobileNumber': req.body.mobileNumber,
-        'password': req.body.password
+
     }, function (err, userDetail) {
         if (err) {
             res.status(500).send({
                 message: "Some error occurred while retrieving notes."
             });
-        } else {
-            if (userDetail === null) {
-                CustomerDetail.findOne({
-                    'mobileNumber': req.body.mobileNumber,
-                }, function (err, userDetails) {
-                    if (err) {
-                        res.status(500).send({
-                            message: "Some error occurred while retrieving data."
-                        });
-                    } else {
-                        if (userDetails === null) {
-                            res.status(200).json(userDetail)
-                        } else if (userDetails !== null) {
-                            res.status(200).json(userDetails)
-                        } /* else if (userDetails.password === undefined) {
-                            res.status(200).json(userDetails)
-                        } else if (userDetails.password !== undefined) {
-                            res.status(200).json(userDetail)
-                        } */
+        } else if (userDetail.password === undefined) {
+            res.status(200).json(userDetail);
+        } else if (userDetail.password !== undefined) {
+            CustomerDetail.findOne({
+                'mobileNumber': req.body.mobileNumber,
+                'password': req.body.password
+
+            }, function (err, userDetails) {
+                if (err) {
+                    res.status(500).send({
+                        message: "Some error occurred while retrieving notes."
+                    });
+
+                } else {
+                    if(userDetails === null) {
+                        res.status(200).json(userDetail);
                     }
-                });
-            } else if (userDetail !== null) {
-                res.status(200).json(userDetail)
-            } 
+                    else{
+                        res.status(200).json(userDetails);
+                    }
+                    
+                }
+            })
         }
     });
+
+
 }
 exports.accountMgmtStatus = function (req, res) {
     AccountMgmtStatus.find({
