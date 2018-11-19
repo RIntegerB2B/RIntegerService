@@ -90,13 +90,14 @@ exports.registrationAndSetup = function (req, res, date, bookingOrder) {
                                                 };
                                                 Promise.all(subscriptionData.map(sub => webpush.sendNotification(
                                                         sub.userSubscriptions, JSON.stringify(notificationPayload))))
-                                                    .then(() => res.status(200).json(bookingData))
+                                                    .then(() => res.status(200).json(registrationBooking))
                                                     .catch(err => {
                                                         console.error("Error sending notification, reason: ", err);
                                                         res.sendStatus(500);
                                                     });
                                             }
                                         });
+                                        res.status(200).json(registrationBooking);
                                     }
                                 });
 
