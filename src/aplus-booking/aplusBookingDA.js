@@ -101,6 +101,7 @@ exports.aplusBooking = function (req, res, date, bookingOrder) {
                                                     });
                                             }
                                         });
+                                        res.status(200).json(bookingData);
                                     }
                                 });
                         }
