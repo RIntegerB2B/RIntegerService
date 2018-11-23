@@ -20,4 +20,23 @@ module.exports = function (app) {
 
     app.route('/scheduledinternationalwomenmodels')        
     .get(scheduledBookingMgr.getInterNationalWomenModels);
+
+
+    app.route('/projectionmodels')       
+    .get(scheduledBookingMgr.projectionModels);
+
+  
+
+    app.route('/projectionnationalmen')        
+    .get(scheduledBookingMgr.projectionNationalMenModels);
+
+    app.route('/projectionnationalwomen')        
+    .get(scheduledBookingMgr.projectionNationalWomenModels);
+
+
+    app.route('/projectioninternationalmen')        
+    .get(scheduledBookingMgr.projectionInterNationalMenModels);
+
+    app.route('/projectioninternationalwomen')        
+    .get(scheduledBookingMgr.projectionInterNationalWomenModels);
 }

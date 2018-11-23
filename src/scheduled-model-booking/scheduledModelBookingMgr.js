@@ -12,6 +12,49 @@ exports.scheduledModels = function (req, res) {
         console.log(error);
     }
 };
+
+exports.projectionModels = function (req, res) {
+
+    try {
+        scheduledBookingDA.projectionModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.projectionNationalMenModels = function (req, res) {
+
+    try {
+        scheduledBookingDA.projectionNationalMenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.projectionNationalWomenModels = function (req, res) {
+
+    try {
+        scheduledBookingDA.projectionNationalWomenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.projectionInterNationalMenModels = function (req, res) {
+
+    try {
+        scheduledBookingDA.projectionInterNationalMenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+exports.projectionInterNationalWomenModels = function (req, res) {
+
+    try {
+        scheduledBookingDA.projectionInterNationalWomenModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
 exports.create = function (req, res) {
 
     try {
@@ -60,7 +103,6 @@ exports.create = function (req, res) {
         console.log(error);
     }
 };
-
 exports.getNationalMenModels = function (req, res) {
     try {
         scheduledBookingDA.getNationalMenModels(req, res);

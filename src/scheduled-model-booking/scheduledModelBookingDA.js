@@ -11,39 +11,6 @@ const webpush = require('web-push');
 var appSetting = require('../config/appSetting');
 
 exports.scheduledModels = function (req, res) {
-  /*   ModelDetail.find({
-        'isScheduledBooking': true
-    }, function (err, models) {
-        if (err) {
-            res.status(500).send({
-                "result": 0
-            });
-        } else {
-            var arraylength = models.length - 1;
-            for (var i = 0; i <= arraylength; i++) {
-                models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
-                var ecomLength = models[i].ecommerceImageName.length - 1;
-
-                for (var j = 0; j <= ecomLength; j++) {
-                    models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].ecommerceImageName[j];
-                }
-                var prodLength = models[i].productImageName.length - 1;
-                for (var j = 0; j <= prodLength; j++) {
-                    models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].productImageName[j];
-                }
-                var portLength = models[i].productImageName.length - 1;
-                for (var k = 0; k <= portLength; k++) {
-                    models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portraitImageName[k];
-                }
-                var portfolioLength = models[i].productImageName.length - 1;
-                for (var l = 0; l <= portLength; l++) {
-                    models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].portFolioImageName[l];
-                }
-            }
-            res.status(200).json(models);
-        }
-    }); */
-
     ModelDetail.find({
         'isScheduledBooking': true
     }).sort({
@@ -78,6 +45,197 @@ exports.scheduledModels = function (req, res) {
             res.status(200).json(models);
         }
     }) 
+};
+
+exports.projectionModels = function (req, res) {
+    ModelDetail.find({
+        'isProjectionModel': true
+    }).sort({
+        position: 1
+    }).exec(function (err, models) {
+        if (err) {
+            res.status(500).send({
+                message: "Some error occurred while retrieving notes."
+            });
+        } else {
+           var arraylength = models.length - 1;
+            for (var i = 0; i <= arraylength; i++) {
+                models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+                var ecomLength = models[i].ecommerceImageName.length - 1;
+
+                for (var j = 0; j <= ecomLength; j++) {
+                    models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'ecommerce' + '/' + models[i].ecommerceImageName[j];
+                }
+                var prodLength = models[i].productImageName.length - 1;
+                for (var j = 0; j <= prodLength; j++) {
+                    models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'product' + '/' +  models[i].productImageName[j];
+                }
+                var portLength = models[i].productImageName.length - 1;
+                for (var k = 0; k <= portLength; k++) {
+                    models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'  + 'portrait' + '/' + models[i].portraitImageName[k];
+                }
+                var portfolioLength = models[i].productImageName.length - 1;
+                for (var l = 0; l <= portLength; l++) {
+                    models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'+ 'portfolio' + '/'  + models[i].portFolioImageName[l];
+                }
+            }
+            res.status(200).json(models);
+        }
+    }) 
+};
+exports.projectionNationalMenModels = function (req, res) {
+
+    ModelDetail.find({
+        'modelType': 'National',
+        'categoryType': 'Men',
+        'isProjectionModel': true
+   }).sort({
+       position: 1
+   }).exec(function (err, models) {
+       if (err) {
+           res.status(500).send({
+               message: "Some error occurred while retrieving notes."
+           });
+       } else {
+          var arraylength = models.length - 1;
+           for (var i = 0; i <= arraylength; i++) {
+               models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length - 1;
+
+               for (var j = 0; j <= ecomLength; j++) {
+                   models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'ecommerce' + '/' + models[i].ecommerceImageName[j];
+               }
+               var prodLength = models[i].productImageName.length - 1;
+               for (var j = 0; j <= prodLength; j++) {
+                   models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'product' + '/' +  models[i].productImageName[j];
+               }
+               var portLength = models[i].productImageName.length - 1;
+               for (var k = 0; k <= portLength; k++) {
+                   models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'  + 'portrait' + '/' + models[i].portraitImageName[k];
+               }
+               var portfolioLength = models[i].productImageName.length - 1;
+               for (var l = 0; l <= portLength; l++) {
+                   models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'+ 'portfolio' + '/'  + models[i].portFolioImageName[l];
+               }
+           }
+           res.status(200).json(models);
+       }
+   }) 
+};
+exports.projectionNationalWomenModels = function (req, res) {
+    ModelDetail.find({
+        'modelType': 'National',
+        'categoryType': 'Women',
+        'isProjectionModel': true
+   }).sort({
+       position: 1
+   }).exec(function (err, models) {
+       if (err) {
+           res.status(500).send({
+               message: "Some error occurred while retrieving notes."
+           });
+       } else {
+          var arraylength = models.length - 1;
+           for (var i = 0; i <= arraylength; i++) {
+               models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length - 1;
+
+               for (var j = 0; j <= ecomLength; j++) {
+                   models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'ecommerce' + '/' + models[i].ecommerceImageName[j];
+               }
+               var prodLength = models[i].productImageName.length - 1;
+               for (var j = 0; j <= prodLength; j++) {
+                   models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'product' + '/' +  models[i].productImageName[j];
+               }
+               var portLength = models[i].productImageName.length - 1;
+               for (var k = 0; k <= portLength; k++) {
+                   models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'  + 'portrait' + '/' + models[i].portraitImageName[k];
+               }
+               var portfolioLength = models[i].productImageName.length - 1;
+               for (var l = 0; l <= portLength; l++) {
+                   models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'+ 'portfolio' + '/'  + models[i].portFolioImageName[l];
+               }
+           }
+           res.status(200).json(models);
+       }
+   }) 
+};
+exports.projectionInterNationalMenModels = function (req, res) {
+
+    ModelDetail.find({
+        'modelType': 'InterNational',
+        'categoryType': 'Men',
+        'isProjectionModel': true
+   }).sort({
+       position: 1
+   }).exec(function (err, models) {
+       if (err) {
+           res.status(500).send({
+               message: "Some error occurred while retrieving notes."
+           });
+       } else {
+          var arraylength = models.length - 1;
+           for (var i = 0; i <= arraylength; i++) {
+               models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length - 1;
+
+               for (var j = 0; j <= ecomLength; j++) {
+                   models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'ecommerce' + '/' + models[i].ecommerceImageName[j];
+               }
+               var prodLength = models[i].productImageName.length - 1;
+               for (var j = 0; j <= prodLength; j++) {
+                   models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'product' + '/' +  models[i].productImageName[j];
+               }
+               var portLength = models[i].productImageName.length - 1;
+               for (var k = 0; k <= portLength; k++) {
+                   models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'  + 'portrait' + '/' + models[i].portraitImageName[k];
+               }
+               var portfolioLength = models[i].productImageName.length - 1;
+               for (var l = 0; l <= portLength; l++) {
+                   models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'+ 'portfolio' + '/'  + models[i].portFolioImageName[l];
+               }
+           }
+           res.status(200).json(models);
+       }
+   }) 
+};
+exports.projectionInterNationalWomenModels = function (req, res) {
+    ModelDetail.find({
+        'modelType': 'InterNational',
+        'categoryType': 'Women',
+        'isProjectionModel': true
+   }).sort({
+       position: 1
+   }).exec(function (err, models) {
+       if (err) {
+           res.status(500).send({
+               message: "Some error occurred while retrieving notes."
+           });
+       } else {
+          var arraylength = models.length - 1;
+           for (var i = 0; i <= arraylength; i++) {
+               models[i].primeImage = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + models[i].primeImage;
+               var ecomLength = models[i].ecommerceImageName.length - 1;
+
+               for (var j = 0; j <= ecomLength; j++) {
+                   models[i].ecommerceImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'ecommerce' + '/' + models[i].ecommerceImageName[j];
+               }
+               var prodLength = models[i].productImageName.length - 1;
+               for (var j = 0; j <= prodLength; j++) {
+                   models[i].productImageName[j] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/' + 'product' + '/' +  models[i].productImageName[j];
+               }
+               var portLength = models[i].productImageName.length - 1;
+               for (var k = 0; k <= portLength; k++) {
+                   models[i].portraitImageName[k] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'  + 'portrait' + '/' + models[i].portraitImageName[k];
+               }
+               var portfolioLength = models[i].productImageName.length - 1;
+               for (var l = 0; l <= portLength; l++) {
+                   models[i].portFolioImageName[l] = appSetting.imageServerPath + 'SP_' + models[i].serviceProviderName + '_models' + '/' + models[i].userName + '/'+ 'portfolio' + '/'  + models[i].portFolioImageName[l];
+               }
+           }
+           res.status(200).json(models);
+       }
+   }) 
 };
 exports.create = function (req, res,date, bookingOrder) {
 
