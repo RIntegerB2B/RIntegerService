@@ -5,6 +5,9 @@ module.exports = function (app) {
     app.route('/scheduledmodels')       
     .get(scheduledBookingMgr.scheduledModels);
 
+    app.route('/scheduledkidsmodels')       
+    .get(scheduledBookingMgr.scheduledKidsModels);
+
     app.route('/scheduledmodelbooking')
     .post(scheduledBookingMgr.create);
 
@@ -25,7 +28,8 @@ module.exports = function (app) {
     app.route('/projectionmodels')       
     .get(scheduledBookingMgr.projectionModels);
 
-  
+    app.route('/projectionkidsmodels')       
+    .get(scheduledBookingMgr.projectionKidsModels);
 
     app.route('/projectionnationalmen')        
     .get(scheduledBookingMgr.projectionNationalMenModels);

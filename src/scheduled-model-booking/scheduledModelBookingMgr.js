@@ -12,6 +12,15 @@ exports.scheduledModels = function (req, res) {
         console.log(error);
     }
 };
+exports.scheduledKidsModels = function (req, res) {
+
+    try {
+        scheduledBookingDA.scheduledKidsModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 
 exports.projectionModels = function (req, res) {
 
@@ -21,6 +30,16 @@ exports.projectionModels = function (req, res) {
         console.log(error);
     }
 };
+exports.projectionKidsModels = function (req, res) {
+
+    try {
+        scheduledBookingDA.projectionKidsModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+
 exports.projectionNationalMenModels = function (req, res) {
 
     try {

@@ -47,6 +47,15 @@ exports.getWomenModels = function (req, res) {
         console.log(error);
     }
 }; */
+
+
+exports.getKidsModels = function (req, res) {
+    try {
+        modelBookingDA.getKidsModels(req, res);
+    } catch (error) {
+        console.log(error);
+    }
+};
 exports.getNationalMenModels = function (req, res) {
     try {
         modelBookingDA.getNationalMenModels(req, res);
