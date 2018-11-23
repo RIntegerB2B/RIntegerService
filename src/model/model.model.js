@@ -23,7 +23,9 @@ const ModelSchema = new mongoose.Schema({
     serviceProviderId: String,
     serviceProviderName: String,
     serviceProviderCompanyName: String,
-    isScheduledBooking: Boolean
+    isScheduledBooking: Boolean,
+    scheduledLocation: String
+
 });
 
  const ModelDetail = mongoose.model('model', ModelSchema);
