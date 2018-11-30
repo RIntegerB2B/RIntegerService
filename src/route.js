@@ -12,6 +12,8 @@
  var itRoutes = require('./itServicesBooking/itServicesBookingRoute');
  var digitalmgmtRoutes = require('./digitalManagementBooking/digitalMarketingRoute');
  var scheduledBookingRoutes = require('./scheduled-model-booking/scheduledModelBookingRoute');
+ var settingsRoutes = require('./settings/settingsRoute');
+ var ourWorkRoutes = require('./our-work/ourWorkRoute');
 
 exports.loadRoutes = function (app) {
     
@@ -28,6 +30,8 @@ exports.loadRoutes = function (app) {
     itRoutes(app);
     digitalmgmtRoutes(app);
     scheduledBookingRoutes(app);
+    settingsRoutes(app)
+    ourWorkRoutes(app);
    /*  notificationRoutes(app); */
 };
 
