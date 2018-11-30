@@ -19,6 +19,8 @@ var modelBookingMgr = require('./model-bookingMgr');
     app.route('/womenmodels')        
     .get(modelBookingMgr.getWomenModels);
  */
+app.route('/kidsmodels')        
+    .get(modelBookingMgr.getKidsModels);
 
     app.route('/nationalmenmodels')        
     .get(modelBookingMgr.getNationalMenModels);

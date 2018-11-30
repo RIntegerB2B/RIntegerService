@@ -12,6 +12,7 @@ exports.catalogBooking = function (req, res) {
     var month = currentDate.getMonth() + 1;
     var year = currentDate.getFullYear();
     var date = day + "/" + month + "/" + year;
+    console.log(date);
 
 
     var oYear = year.toString();
