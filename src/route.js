@@ -14,6 +14,8 @@
  var scheduledBookingRoutes = require('./scheduled-model-booking/scheduledModelBookingRoute');
  var settingsRoutes = require('./settings/settingsRoute');
  var ourWorkRoutes = require('./our-work/ourWorkRoute');
+ var videoRoutes = require('./video-portfolio/videoPortfolioRoute');
+ var adsRoutes = require('./ads/adsRoute');
 
 exports.loadRoutes = function (app) {
     
@@ -32,6 +34,8 @@ exports.loadRoutes = function (app) {
     scheduledBookingRoutes(app);
     settingsRoutes(app)
     ourWorkRoutes(app);
+    videoRoutes(app);
+    adsRoutes(app);
    /*  notificationRoutes(app); */
 };
 
