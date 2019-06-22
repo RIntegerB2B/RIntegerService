@@ -35,7 +35,8 @@ mongoose.connection.once('open', function () {
 })
 
 app.get('/test', function (req, res) {
-    res.send("Success!");
+    res.send("Success from rinteger-service");
 })
 
+module.exports = app;
 console.log('RInteger Service started on: ' + port);
